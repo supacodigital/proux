@@ -7,19 +7,22 @@
 .panel {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-2);
-  padding: var(--space-2);
-  background: var(--color-navy-900);
+  gap: 0;
+  background: var(--color-bg);
 }
 
 .card {
   position: relative;
   display: block;
   aspect-ratio: 4 / 3;
-  border-radius: var(--radius);
   overflow: hidden;
-  background: var(--color-navy-900);
+  background: var(--color-surface-2);
   isolation: isolate;
+}
+
+/* fin séparateur entre les cartes */
+.card + .card {
+  border-left: 1px solid var(--color-border);
 }
 
 .media {

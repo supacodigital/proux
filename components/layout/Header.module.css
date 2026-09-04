@@ -227,8 +227,8 @@
   width: 100%;
   max-width: 60rem;
   margin-top: var(--space-1);
-  background: var(--color-navy-900);
-  border: 1px solid var(--color-navy-700);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
