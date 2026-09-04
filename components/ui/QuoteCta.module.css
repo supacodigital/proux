@@ -1,11 +1,14 @@
 /* =============================================================
    QuoteCta — CTA signature PROUX, forme « Barre chantier » (F)
-   Bloc marine · coin bas-gauche coupé. Marine sur tous les fonds.
+   Bloc à dégradé diagonal marine → bleu-noir, coin bas-gauche coupé.
+   Le dégradé glisse au survol. Même rendu sur tous les fonds.
    ============================================================= */
 
 .cta {
-  --cta-bg: var(--color-navy);
-  --cta-bg-hover: var(--color-navy-700);
+  /* dégradé : bleu marine (haut-gauche) → bleu très foncé / noir (bas-droite) */
+  --cta-c1: #1d4c7e;
+  --cta-c2: #0b1c30;
+  --cta-c3: #060f1c;
   --cta-fg: #fff;
   --cta-glow: 31 111 235; /* rgb de --color-accent */
 
@@ -18,7 +21,6 @@
   display: inline-flex;
   align-items: center;
   padding: var(--cta-py) var(--cta-px);
-  background: var(--cta-bg);
   color: var(--cta-fg);
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--cta-fs);
@@ -34,17 +36,45 @@
     var(--cta-cut) 100%,
     0 calc(100% - var(--cta-cut))
   );
+
+  background-image: linear-gradient(
+    135deg,
+    var(--cta-c1) 0%,
+    var(--cta-c2) 55%,
+    var(--cta-c3) 100%
+  );
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+
   box-shadow:
-    0 1px 2px hsl(var(--color-shadow) / 0.14),
-    0 10px 26px -8px rgb(var(--cta-glow) / 0.32);
+    0 1px 2px hsl(var(--color-shadow) / 0.18),
+    0 10px 26px -8px rgb(var(--cta-glow) / 0.32),
+    inset 0 1px 0 hsl(210 60% 60% / 0.14);
   transition:
     transform var(--dur-fast) var(--ease-out),
-    background-color var(--dur-base) ease,
+    background-position var(--dur-slow) var(--ease-out),
     box-shadow var(--dur-base) ease;
+}
+
+/* Lueur bleue interne, concentrée près du coin coupé (bas-gauche) */
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 160% at 6% 100%,
+    rgb(var(--cta-glow) / 0.5) 0%,
+    rgb(var(--cta-glow) / 0.14) 32%,
+    rgb(var(--cta-glow) / 0) 62%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity var(--dur-base) ease;
 }
 
 .label {
   position: relative;
+  z-index: 1;
 }
 
 /* — Tailles — */
@@ -70,22 +100,25 @@
   justify-content: center;
 }
 
-/* — Sur fond sombre : marine plus clair, halo renforcé — */
+/* — Sur fond sombre : halo renforcé (le dégradé reste identique) — */
 .onDark {
-  --cta-bg: #163a5f; /* marine un cran plus clair que le hero */
-  --cta-bg-hover: #1c4674;
   box-shadow:
-    0 1px 2px hsl(var(--color-shadow) / 0.24),
-    0 14px 34px -8px rgb(var(--cta-glow) / 0.5);
+    0 1px 2px hsl(var(--color-shadow) / 0.28),
+    0 14px 34px -8px rgb(var(--cta-glow) / 0.5),
+    inset 0 1px 0 hsl(210 60% 60% / 0.16);
 }
 
 /* — Interactions — */
 @media (hover: hover) and (pointer: fine) {
   .cta:hover {
-    background: var(--cta-bg-hover);
+    background-position: 100% 100%;
     box-shadow:
-      0 1px 2px hsl(var(--color-shadow) / 0.16),
-      0 16px 32px -6px rgb(var(--cta-glow) / 0.45);
+      0 1px 2px hsl(var(--color-shadow) / 0.2),
+      0 16px 34px -6px rgb(var(--cta-glow) / 0.5),
+      inset 0 1px 0 hsl(210 60% 60% / 0.2);
+  }
+  .cta:hover::before {
+    opacity: 0.9;
   }
 }
 
@@ -103,6 +136,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition:
+      background-position var(--dur-base) ease,
+      box-shadow var(--dur-base) ease;
+  }
   .cta:active {
     transform: none;
   }
