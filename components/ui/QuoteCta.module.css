@@ -1,0 +1,109 @@
+/* =============================================================
+   QuoteCta — CTA signature PROUX, forme « Barre chantier » (F)
+   Bloc marine · coin bas-gauche coupé. Marine sur tous les fonds.
+   ============================================================= */
+
+.cta {
+  --cta-bg: var(--color-navy);
+  --cta-bg-hover: var(--color-navy-700);
+  --cta-fg: #fff;
+  --cta-glow: 31 111 235; /* rgb de --color-accent */
+
+  --cta-py: 0.625rem;
+  --cta-px: 1.375rem;
+  --cta-fs: var(--text-sm);
+  --cta-cut: 0.75rem; /* taille du coin coupé bas-gauche */
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--cta-py) var(--cta-px);
+  background: var(--cta-bg);
+  color: var(--cta-fg);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--cta-fs);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  min-height: 40px;
+  border-radius: 0.5rem;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--cta-cut) 100%,
+    0 calc(100% - var(--cta-cut))
+  );
+  box-shadow:
+    0 1px 2px hsl(var(--color-shadow) / 0.14),
+    0 10px 26px -8px rgb(var(--cta-glow) / 0.32);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+
+.label {
+  position: relative;
+}
+
+/* — Tailles — */
+.sm {
+  --cta-fs: var(--text-xs);
+  --cta-py: 0.5rem;
+  --cta-px: 1rem;
+  --cta-cut: 0.625rem;
+  min-height: 36px;
+}
+
+.lg {
+  --cta-fs: var(--text-base);
+  --cta-py: 0.875rem;
+  --cta-px: 1.625rem;
+  --cta-cut: 0.875rem;
+  min-height: 46px;
+}
+
+.block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+/* — Sur fond sombre : marine plus clair, halo renforcé — */
+.onDark {
+  --cta-bg: #163a5f; /* marine un cran plus clair que le hero */
+  --cta-bg-hover: #1c4674;
+  box-shadow:
+    0 1px 2px hsl(var(--color-shadow) / 0.24),
+    0 14px 34px -8px rgb(var(--cta-glow) / 0.5);
+}
+
+/* — Interactions — */
+@media (hover: hover) and (pointer: fine) {
+  .cta:hover {
+    background: var(--cta-bg-hover);
+    box-shadow:
+      0 1px 2px hsl(var(--color-shadow) / 0.16),
+      0 16px 32px -6px rgb(var(--cta-glow) / 0.45);
+  }
+}
+
+.cta:active {
+  transform: scale(0.97);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.onDark:focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta:active {
+    transform: none;
+  }
+}

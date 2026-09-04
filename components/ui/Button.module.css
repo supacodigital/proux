@@ -1,0 +1,111 @@
+/* Button — claude.md §5 : feedback instantané au press, easing custom, < 320ms */
+
+.button {
+  --btn-fs: var(--text-sm);
+  --btn-py: 0.6875rem;
+  --btn-px: var(--space-5);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--btn-py) var(--btn-px);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: var(--btn-fs);
+  font-weight: 550;
+  line-height: 1;
+  white-space: nowrap;
+  min-height: 44px; /* cible tactile a11y */
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-base) ease,
+    border-color var(--dur-base) ease,
+    color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+/* — Tailles — */
+.md {
+  --btn-fs: var(--text-sm);
+}
+
+.lg {
+  --btn-fs: var(--text-base);
+  --btn-py: 0.9375rem;
+  --btn-px: var(--space-6);
+}
+
+/* — Variantes — */
+.primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.secondary {
+  background: var(--color-bg);
+  color: var(--color-navy);
+  border: 1px solid var(--color-border);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-navy);
+  min-height: 40px;
+  --btn-px: var(--space-3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .secondary:hover {
+    border-color: var(--color-navy);
+    background: var(--color-surface);
+  }
+
+  .ghost:hover {
+    background: var(--color-surface);
+  }
+}
+
+/* — Sur fond sombre (hero) — */
+.onDark.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-on-dark);
+  border-color: var(--color-on-dark-border);
+  backdrop-filter: blur(4px);
+}
+
+.onDark.ghost {
+  color: var(--color-on-dark);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .onDark.secondary:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.32);
+  }
+
+  .onDark.ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:active {
+    transform: none;
+  }
+}

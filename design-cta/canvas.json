@@ -1,0 +1,7 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1280, "h": 1180 },
+    { "file": "InContext.dc.html", "x": 1400, "y": 0, "w": 900, "h": 900 }
+  ],
+  "launch": { "view": "canvas" }
+}

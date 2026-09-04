@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --navy: #0f2a47;
+      --ink: #0c1116;
+      --ink-soft: #3d4753;
+      --ink-mute: #6b7684;
+      --accent: #1f6feb;
+      --accent-hover: #1a5fd0;
+      --accent-soft: #e8f0fe;
+      --surface: #f6f8fb;
+      --border: #dbe3ec;
+      --shadow: 213 40% 12%;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--ink);
+      background: #fff;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-hover); }
+
+    .page { padding: 56px 60px 72px; max-width: 1240px; margin: 0 auto; }
+    .head { margin-bottom: 8px; }
+    .kicker {
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .kicker::before { content: ""; width: 22px; height: 2px; background: var(--accent); display: block; }
+    h1 {
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-size: 34px; font-weight: 600; letter-spacing: -0.02em;
+      margin: 14px 0 6px; color: var(--navy);
+    }
+    .sub { font-size: 15px; color: var(--ink-soft); max-width: 60ch; line-height: 1.6; }
+
+    .grid {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 34px 34px 30px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+    }
+    .card.dark {
+      background: var(--navy);
+      border-color: transparent;
+    }
+    .card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .card-name {
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-size: 17px; font-weight: 600; color: var(--navy);
+    }
+    .card.dark .card-name { color: #fff; }
+    .card-tag { font-size: 12.5px; color: var(--ink-mute); }
+    .card.dark .card-tag { color: #b9c6d6; }
+    .card-note { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+    .card.dark .card-note { color: #b9c6d6; }
+    .stage {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      min-height: 92px;
+    }
+    .stage.center { justify-content: center; }
+
+    /* ============ CTA VARIANTS ============ */
+
+    /* A — Bloc-flèche : le bouton finit en pointe de flèche (chevron découpé) */
+    .cta-a {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 40px 16px 26px;
+      background: var(--accent); color: #fff;
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-weight: 600; font-size: 15px; line-height: 1;
+      border: none; cursor: pointer;
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%);
+      transition: background .2s;
+    }
+    .cta-a:hover { background: var(--accent-hover); }
+    .cta-a svg { width: 16px; height: 16px; }
+    .cta-a-notch {
+      /* variante : encoche à gauche + pointe à droite (ruban) */
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 14px 50%);
+      padding-left: 34px;
+    }
+
+    /* B — Pilule + capsule-flèche détachée (jeton d'action) */
+    .cta-b {
+      display: inline-flex; align-items: stretch; gap: 6px;
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-weight: 600; font-size: 15px;
+    }
+    .cta-b .body {
+      display: flex; align-items: center;
+      padding: 15px 22px;
+      background: var(--accent); color: #fff;
+      border-radius: 999px 8px 8px 999px;
+    }
+    .cta-b .knob {
+      display: flex; align-items: center; justify-content: center;
+      width: 56px;
+      background: var(--navy); color: #fff;
+      border-radius: 8px 999px 999px 8px;
+      transition: transform .2s;
+    }
+    .cta-b:hover .knob { transform: translateX(3px); }
+    .cta-b svg { width: 17px; height: 17px; }
+
+    /* C — Goutte : coin haut-gauche vif, autres coins arrondis (identité "eau") */
+    .cta-c {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 26px;
+      background: var(--accent); color: #fff;
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-weight: 600; font-size: 15px; line-height: 1;
+      border: none; cursor: pointer;
+      border-radius: 4px 999px 999px 999px;
+      box-shadow: 0 10px 30px -8px rgba(31,111,235,.5);
+      transition: border-radius .25s, box-shadow .2s;
+    }
+    .cta-c:hover { border-radius: 999px 4px 999px 999px; box-shadow: 0 14px 34px -6px rgba(31,111,235,.6); }
+    .cta-c .dot {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cta-c .dot svg { width: 10px; height: 13px; }
+
+    /* D — Toit : ligne supérieure en chevron (rappel du logo), base plate */
+    .cta-d {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 30px 34px 17px;
+      background: var(--accent); color: #fff;
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-weight: 600; font-size: 15px; line-height: 1;
+      border: none; cursor: pointer;
+      clip-path: polygon(0 30px, 50% 0, 100% 30px, 100% 100%, 0 100%);
+      transition: background .2s;
+    }
+    .cta-d:hover { background: var(--accent-hover); }
+    .cta-d svg { width: 16px; height: 16px; }
+
+    /* E — Contour épais + remplissage au survol (ghost premium) */
+    .cta-e {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 15px 26px;
+      background: transparent; color: var(--accent);
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-weight: 600; font-size: 15px; line-height: 1;
+      border: 2px solid var(--accent); border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s, color .2s, box-shadow .2s;
+    }
+    .cta-e:hover {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 10px 26px -8px rgba(31,111,235,.5);
+    }
+    .cta-e svg { width: 16px; height: 16px; }
+    .cta-e.dark { color: #fff; border-color: rgba(255,255,255,.5); }
+    .cta-e.dark:hover { background: #fff; color: var(--navy); border-color: #fff; }
+
+    /* F — Barre large + coin coupé + jauge (chantier / devis) */
+    .cta-f {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 18px 30px;
+      background: var(--navy); color: #fff;
+      font-family: "Inter Tight", system-ui, sans-serif;
+      font-weight: 600; font-size: 15px; line-height: 1;
+      border: none; cursor: pointer;
+      border-radius: 10px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+      overflow: hidden;
+    }
+    .cta-f::after {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--accent);
+    }
+    .cta-f .tick {
+      display: flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 6px;
+      background: var(--accent);
+    }
+    .cta-f .tick svg { width: 14px; height: 14px; }
+
+    .footnote {
+      margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--ink-mute); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .footnote svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 1px; color: var(--accent); }
+  </style>
+</helmet>
+
+<div class="page">
+  <div class="head">
+    <div class="kicker">PROUX · Système de bouton</div>
+    <h1>Six formes de CTA « Devis gratuit »</h1>
+    <p class="sub">Même palette, même typo, six silhouettes. Chacune joue une carte d'identité différente : la flèche, la goutte, le toit, le chantier. À choisir comme signature du site.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-name">A · Bloc-flèche</span>
+        <span class="card-tag">direct, directionnel</span>
+      </div>
+      <div class="stage">
+        <button class="cta-a">
+          Devis gratuit
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="cta-a cta-a-notch">Devis gratuit</button>
+      </div>
+      <p class="card-note">Le bouton EST une flèche. Se lit « on avance ». Version simple + version ruban (encoche à gauche).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-name">B · Capsule + jeton</span>
+        <span class="card-tag">produit, moderne</span>
+      </div>
+      <div class="stage">
+        <div class="cta-b">
+          <span class="body">Devis gratuit</span>
+          <span class="knob">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </div>
+      <p class="card-note">Corps pilule + pastille marine détachée qui glisse au survol. Bicolore, mémorable, très « app ».</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-name">C · Goutte</span>
+        <span class="card-tag">signature actuelle, affinée</span>
+      </div>
+      <div class="stage">
+        <button class="cta-c">
+          <span class="dot">
+            <svg viewBox="0 0 16 20" fill="currentColor"><path d="M8 1s6 6.6 6 11A6 6 0 0 1 2 12C2 7.6 8 1 8 1Z"/></svg>
+          </span>
+          Devis gratuit
+        </button>
+      </div>
+      <p class="card-note">Un seul coin vif (haut-gauche) sur une pilule, il bascule en diagonale au survol. Halo bleu. Rappelle la goutte d'eau du logo.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-name">D · Toit</span>
+        <span class="card-tag">métier, reconnaissable</span>
+      </div>
+      <div class="stage">
+        <button class="cta-d">
+          Devis gratuit
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="card-note">Le bord supérieur forme un pignon, comme le toit du logo. Très identitaire — à réserver aux CTA majeurs (hero, bandeau final).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-name">E · Contour plein</span>
+        <span class="card-tag">premium, sobre</span>
+      </div>
+      <div class="stage">
+        <button class="cta-e">
+          Devis gratuit
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="card-note">Trait 2px, se remplit et s'illumine au survol. Élégant en secondaire (« Voir nos réalisations »), ou en primaire pour un site plus discret.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-name">F · Barre chantier</span>
+        <span class="card-tag">solide, artisan</span>
+      </div>
+      <div class="stage">
+        <button class="cta-f">
+          <span class="tick">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+          </span>
+          Devis gratuit
+        </button>
+      </div>
+      <p class="card-note">Marine, coin inférieur-gauche coupé, liseré bleu vertical, pastille « coche ». Évoque le devis validé, le sérieux du chantier.</p>
+    </div>
+
+  </div>
+
+  <div class="footnote">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+    <span>Formes statiques pour comparaison. Le survol est indiqué mais non animé ici. Toutes respectent la cible tactile 44&nbsp;px, le contraste AA et se déclinent sur fond clair et fond sombre.</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* =============================================================
+   MegaMenu — panneau Prestations, version minimale
+   3 cartes photo plein cadre, titre + phrase centrés en surimpression.
+   Ouverture / animation du conteneur : Header.module.css (.megaWrap).
+   ============================================================= */
+
+.panel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-navy-900);
+}
+
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-navy-900);
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.mediaImg {
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+/* Voile marine, dense en bas pour porter le texte */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    hsl(213 55% 8% / 0.95) 0%,
+    hsl(213 55% 8% / 0.85) 38%,
+    hsl(213 55% 10% / 0.4) 68%,
+    hsl(213 55% 12% / 0) 100%
+  );
+  transition: opacity var(--dur-base) ease;
+}
+
+.body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  padding: var(--space-5);
+  text-align: start;
+}
+
+/* Sur-titre : petit, blanc, majuscules espacées, précédé d'un trait bleu */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.375rem;
+  /* léger décalage qui se résorbe au survol */
+  transform: translateY(3px);
+  opacity: 0.9;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-base) ease;
+}
+
+/* petit trait avant le kicker */
+.kicker::before {
+  content: "";
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Titre surdimensionné */
+.label {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #fff;
+}
+
+/* Soulignement accent qui grandit gauche→droite au survol de la carte */
+.underline {
+  position: absolute;
+  left: 0;
+  bottom: -0.375rem;
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.tagline {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--color-on-dark);
+  max-width: 24ch;
+}
+
+/* Bouton "Découvrir" — même forme que le CTA du header
+   (bloc marine, coin inférieur-gauche coupé). */
+.cta {
+  --cut: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--space-3);
+  padding: 0.5rem 1rem;
+  background: #163a5f;
+  color: #fff;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 0.5rem;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
+  );
+  box-shadow:
+    0 1px 2px hsl(var(--color-shadow) / 0.24),
+    0 10px 24px -10px rgb(31 111 235 / 0.5);
+  transition: background-color var(--dur-base) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .mediaImg {
+    transform: scale(1.05);
+  }
+  .card:hover::after {
+    opacity: 0.9;
+  }
+  .card:hover .cta {
+    background: #1c4674;
+  }
+  .card:hover .kicker {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .card:hover .underline {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediaImg,
+  .card::after,
+  .cta,
+  .kicker,
+  .underline {
+    transition: none;
+  }
+  .card:hover .mediaImg {
+    transform: none;
+  }
+  .kicker {
+    transform: none;
+    opacity: 1;
+  }
+}

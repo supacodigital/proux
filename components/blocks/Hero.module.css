@@ -1,0 +1,151 @@
+/* =============================================================
+   Hero — vidéo de fond, contenu centré
+   Le header est en overlay au-dessus : on compense sa hauteur.
+   ============================================================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: calc(var(--header-h) + var(--space-16));
+  padding-bottom: var(--space-20);
+  overflow: hidden;
+  background: var(--color-navy-900);
+  color: var(--color-on-dark);
+  text-align: center;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+/* Assombrissement neutre léger + renforts haut/bas (header, CTA).
+   Pas de teinte bleue : juste du noir translucide. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      hsl(220 15% 5% / 0.55) 0%,
+      hsl(220 15% 5% / 0) 24%
+    ),
+    linear-gradient(
+      to top,
+      hsl(220 15% 5% / 0.6) 0%,
+      hsl(220 15% 5% / 0) 32%
+    ),
+    hsl(220 12% 5% / 0.44);
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: var(--space-5);
+  text-shadow: 0 1px 12px hsl(220 30% 4% / 0.6);
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+}
+
+.title {
+  color: #fff;
+  font-size: var(--text-5xl);
+  max-width: 18ch;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px hsl(220 30% 4% / 0.55);
+}
+
+.lead {
+  margin-top: var(--space-6);
+  max-width: 52ch;
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: #fff;
+  text-wrap: pretty;
+  text-shadow: 0 1px 16px hsl(220 30% 4% / 0.6);
+}
+
+.actions {
+  margin-top: var(--space-10);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.secondary {
+  gap: var(--space-2);
+}
+
+.reassurance {
+  margin-top: var(--space-8);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: #fff;
+  text-wrap: balance;
+  text-shadow: 0 1px 12px hsl(220 30% 4% / 0.6);
+}
+
+.reassurance svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  .hero {
+    min-height: 88vh;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 22rem;
+  }
+}
+
+/* Mouvement réduit : on fige la vidéo sur le poster */
+@media (prefers-reduced-motion: reduce) {
+  .video {
+    display: none;
+  }
+  .media {
+    background: url("/video/hero-poster.jpg") center / cover no-repeat;
+  }
+}
