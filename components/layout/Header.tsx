@@ -136,7 +136,7 @@ export function Header({ overlay = false }: HeaderProps) {
     >
       <Container className={styles.inner}>
         <Link href="/" className={styles.brand} aria-label="PROUX — accueil">
-          <Logo tone={solid ? "default" : "onDark"} height={38} priority />
+          <Logo tone={solid ? "default" : "onDark"} height={42} priority />
         </Link>
 
         <div className={styles.end}>

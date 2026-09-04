@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { QuoteCta } from "@/components/ui/QuoteCta";
-import { company, legalNav } from "@/content/company";
+import { company } from "@/content/company";
 import { poles } from "@/content/services";
 import styles from "./MobileMenu.module.css";
 
@@ -15,10 +15,11 @@ type MobileMenuProps = {
   onClose: () => void;
 };
 
-/** Liens hors pôles, en liste sobre sous les cartes photo. */
+/** Liens hors pôles, en liste sobre sous les cartes photo.
+ * Doit rester aligné sur `primaryNav` (desktop) — cf. claude.md §7.4 :
+ * la page zone d'intervention ne doit pas polluer la nav principale. */
 const secondaryLinks = [
   { label: "Réalisations", href: "/realisations" },
-  { label: "Zone d’intervention", href: "/zone-intervention" },
   { label: "À propos", href: "/a-propos" },
 ];
 
@@ -124,13 +125,6 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           <Phone size={18} aria-hidden />
           <span>{company.phone.display}</span>
         </a>
-        <div className={styles.legal}>
-          {legalNav.map((link) => (
-            <Link key={link.href} href={link.href} onClick={onClose}>
-              {link.label}
-            </Link>
-          ))}
-        </div>
       </div>
     </div>
   );

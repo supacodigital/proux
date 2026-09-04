@@ -215,15 +215,6 @@
   color: var(--color-accent);
 }
 
-.legal {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-5);
-  font-size: var(--text-xs);
-  color: var(--color-ink-mute);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .root,
   .card,

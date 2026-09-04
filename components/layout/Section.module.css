@@ -1,0 +1,29 @@
+.section {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-24);
+  }
+}
+
+.flush {
+  padding-block: 0;
+}
+
+/* — Tons — */
+.default {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.surface {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.navy {
+  background: var(--color-navy-900);
+  color: var(--color-on-dark);
+}

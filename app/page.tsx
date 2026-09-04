@@ -1,10 +1,21 @@
 import { Hero } from "@/components/blocks/Hero";
+import { TrustBar } from "@/components/blocks/TrustBar";
+import { ServicePillars } from "@/components/blocks/ServicePillars";
+import { Section } from "@/components/layout/Section";
 
 /**
- * Accueil — pour l'instant : Hero seul.
- * Les sections suivantes (TrustBar, 3 pôles, Avant/Après, Méthode, Chiffres,
- * Réalisations, Avis, Zone, FAQ, CTA) seront ajoutées ensuite — cf. claude.md §7.1.
+ * Accueil — sections en cours d'assemblage (cf. claude.md §7.1) :
+ * Hero ✓ · TrustBar ✓ · 3 pôles ✓ · Avant/Après · Méthode · Chiffres ·
+ * Réalisations · Avis · Zone · FAQ · CtaBanner.
  */
 export default function HomePage() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <TrustBar />
+      <Section aria-labelledby="pillars-title">
+        <ServicePillars />
+      </Section>
+    </>
+  );
 }

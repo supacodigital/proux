@@ -21,7 +21,10 @@ export type Pole = {
   kicker: string;
   href: string;
   tagline: string;
+  /** vignette carrée/portrait — méga-menu & menu mobile */
   image: string;
+  /** image paysage 16:10 — section « Nos prestations » de la home */
+  wideImage: string;
   imageAlt: string;
   /** 2 points de réassurance courts, affichés dans le méga-menu */
   highlights: string[];
@@ -36,6 +39,7 @@ export const poles: Pole[] = [
     href: "/toiture",
     tagline: "Démoussage, hydrofuge et réparations de couverture.",
     image: "/img/nav/toiture.jpg",
+    wideImage: "/img/services/toiture.jpg",
     imageAlt: "Toiture en tuile après démoussage par PROUX",
     highlights: [
       "Produits anti-mousse respectueux des tuiles",
@@ -59,6 +63,7 @@ export const poles: Pole[] = [
     href: "/nettoyage",
     tagline: "Façades, terrasses, dallages et murets remis à neuf.",
     image: "/img/nav/nettoyage.jpg",
+    wideImage: "/img/services/nettoyage.jpg",
     imageAlt: "Terrasse en dallage nettoyée par PROUX",
     highlights: [
       "Pression adaptée à chaque support",
@@ -81,6 +86,7 @@ export const poles: Pole[] = [
     href: "/peinture",
     tagline: "Peinture extérieure : façade, sous-face, boiseries.",
     image: "/img/nav/peinture.jpg",
+    wideImage: "/img/services/peinture.jpg",
     imageAlt: "Façade repeinte par PROUX",
     highlights: [
       "Préparation des supports avant mise en peinture",

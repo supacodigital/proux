@@ -1,5 +1,6 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
 import { QuoteCta } from "@/components/ui/QuoteCta";
 import { company } from "@/content/company";
@@ -27,16 +28,11 @@ export function Hero() {
       <Container className={styles.inner}>
         <p className={styles.eyebrow}>{company.area}</p>
 
-        <h1 id="hero-title" className={styles.title}>
-          Votre toiture retrouve
-          <br />
-          son éclat d’origine.
-        </h1>
+        <Logo tone="onDark" height={480} priority className={styles.logo} />
 
-        <p className={styles.lead}>
-          PROUX nettoie, protège et repeint vos extérieurs — toiture, façade,
-          terrasse — avec un travail soigné et un résultat qui dure.
-        </p>
+        <h1 id="hero-title" className="visually-hidden">
+          Votre toiture retrouve son éclat d’origine.
+        </h1>
 
         <div className={styles.actions}>
           <QuoteCta size="lg" onDark label="Demander un devis gratuit" />

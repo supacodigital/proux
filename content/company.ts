@@ -56,9 +56,15 @@ export const company = {
   trust: {
     // TODO(client) : compagnie + n° de contrat décennale
     decennale: { label: "Assurance décennale", confirmed: false },
-    freeQuote: { label: "Devis gratuit sous 48 h", confirmed: true },
+    freeQuote: { label: "Devis gratuit", confirmed: true },
     // TODO(client) : nombre de chantiers / années d’expérience communicables
     experience: { label: "Artisan local", confirmed: true },
+  },
+
+  // TODO(client) : chiffres réels — placeholders en attendant
+  stats: {
+    yearsExperience: null as number | null, // ex. 12
+    projectsCount: null as number | null, // ex. 450
   },
 
   // — Liens externes —
@@ -78,7 +84,12 @@ export const company = {
 /* Navigation principale — les pages cibles seront créées plus tard.
    Header (méga-menu) + MobileMenu + Footer s’appuient dessus. */
 export const primaryNav: NavItem[] = [
-  { kind: "mega", label: "Prestations", href: "/toiture", panel: "prestations" },
+  {
+    kind: "mega",
+    label: "Prestations",
+    href: "/toiture",
+    panel: "prestations",
+  },
   { kind: "link", label: "Réalisations", href: "/realisations" },
   { kind: "link", label: "À propos", href: "/a-propos" },
 ];
@@ -122,7 +133,10 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
         label: "Saint-Genis-Pouilly",
         href: "/zone-intervention/saint-genis-pouilly",
       },
-      { label: "Divonne-les-Bains", href: "/zone-intervention/divonne-les-bains" },
+      {
+        label: "Divonne-les-Bains",
+        href: "/zone-intervention/divonne-les-bains",
+      },
       {
         label: "Bellegarde-sur-Valserine",
         href: "/zone-intervention/bellegarde-sur-valserine",
@@ -138,3 +152,23 @@ export const legalNav: NavLink[] = [
 ];
 
 export const CONTACT_HREF = "/contact";
+
+/* Éléments de la TrustBar (juste après le hero).
+   `pending: true` → placeholder visible, à remplacer par le client.
+   `icon` référence une clé de components/blocks/TrustBar.tsx (TRUST_ICONS). */
+export const trustBar: {
+  label: string;
+  icon: "shield" | "clock" | "map" | "home";
+  pending?: boolean;
+}[] = [
+  { label: "Assurance décennale", icon: "shield", pending: true },
+  { label: "Devis gratuit sous 48 h", icon: "clock" },
+  { label: "Artisan local — Ain & Pays de Gex", icon: "map" },
+  {
+    label: company.stats.projectsCount
+      ? `+ ${company.stats.projectsCount} chantiers réalisés`
+      : "+ [X] chantiers réalisés",
+    icon: "home",
+    pending: !company.stats.projectsCount,
+  },
+];
