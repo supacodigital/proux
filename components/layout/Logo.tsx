@@ -15,11 +15,9 @@ type LogoProps = {
 /**
  * Logo PROUX — image officielle du client, sans fond.
  * Deux déclinaisons : couleur (par défaut, 250×157) et blanc (sur fond
- * sombre, 1536×1024, détouré depuis un fond noir plein).
- * TODO(client) : la version blanche affiche « Peinture · Imperméabilisation ·
- * Toiture » — la couleur affiche « Peinture · Nettoyage · Toiture » (cf.
- * claude.md §2). À harmoniser avec le client, et remplacer les deux par le
- * vecteur définitif dès qu'il est fourni (cf. claude.md §9).
+ * sombre, 1586×992, détouré depuis un fond noir plein).
+ * TODO(client) : remplacer les deux par le vecteur définitif dès qu'il
+ * est fourni (cf. claude.md §9).
  */
 export function Logo({
   tone = "default",
