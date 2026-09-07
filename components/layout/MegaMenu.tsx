@@ -20,7 +20,7 @@ export function PrestationsPanel({ onNavigate }: PanelProps) {
               src={pole.image}
               alt=""
               fill
-              sizes="(max-width: 1200px) 33vw, 320px"
+              sizes="33vw"
               className={styles.mediaImg}
             />
           </span>

@@ -1,16 +1,74 @@
-/* TrustBar — bande fine sous le hero, transition sombre → clair */
+/* TrustBar — bandeau ancré au bas du hero, overlay marine translucide.
+   Les arguments défilent en continu (ruban linéaire). Déroule au 1er scroll. */
 
 .wrap {
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+
+  background: hsl(213 55% 10% / 0.62);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border-top: 1px solid hsl(0 0% 100% / 0.12);
+
+  /* état de repos : masqué sous le bord du hero (clippé par overflow:hidden),
+     il « déroule » vers le haut au 1er scroll */
+  transform: translateY(100%);
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 
-.list {
+.wrap[data-revealed] {
+  transform: translateY(0);
+}
+
+/* Fenêtre du ruban : masque les bords en fondu */
+.viewport {
+  overflow: hidden;
+  padding-block: var(--space-4);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+/* Piste = 2 groupes identiques bout à bout ; on translate de -50 % en boucle */
+.track {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-4) var(--space-6);
-  padding-block: var(--space-5);
+  width: max-content;
+  animation: trust-scroll 32s linear infinite;
+}
+
+@keyframes trust-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause quand l'utilisateur survole / met le focus dans le bandeau */
+.wrap:hover .track,
+.wrap:focus-within .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .item {
@@ -18,10 +76,25 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 0;
+  padding-inline: var(--space-6);
   font-size: var(--text-sm);
   font-weight: 550;
   font-variant-numeric: tabular-nums;
-  color: var(--color-ink-soft);
+  white-space: nowrap;
+  color: hsl(0 0% 100% / 0.92);
+  text-shadow: 0 1px 8px hsl(213 40% 4% / 0.5);
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 1.1em;
+  background: hsl(0 0% 100% / 0.18);
 }
 
 .icon {
@@ -29,33 +102,54 @@
   flex-shrink: 0;
 }
 
+/* Placeholders en attente d'infos client : légèrement estompés */
 .item[data-pending] {
-  color: var(--color-ink-mute);
+  color: hsl(0 0% 100% / 0.62);
 }
 
 .item[data-pending] .icon {
-  color: var(--color-ink-mute);
+  color: hsl(0 0% 100% / 0.62);
 }
 
-@media (min-width: 768px) {
-  .list {
-    flex-wrap: nowrap;
-    gap: 0;
-    padding-block: var(--space-5);
+@media (max-width: 767px) {
+  .viewport {
+    padding-block: var(--space-3);
   }
 
   .item {
-    padding-inline: var(--space-6);
+    padding-inline: var(--space-4);
+    font-size: var(--text-xs);
+  }
+}
+
+/* Mouvement réduit : bandeau visible d'emblée, ruban figé et centré */
+@media (prefers-reduced-motion: reduce) {
+  .wrap {
+    transition: none;
   }
 
-  .item:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 1.1em;
-    background: var(--color-border);
+  .viewport {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* on masque le duplicata et on retire le séparateur du dernier item */
+  .group[aria-hidden] {
+    display: none;
+  }
+
+  .group:not([aria-hidden]) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .group:not([aria-hidden]) .item:last-child::after {
+    display: none;
   }
 }

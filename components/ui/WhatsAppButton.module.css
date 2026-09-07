@@ -1,0 +1,69 @@
+/* =============================================================
+   WhatsAppButton — FAB flottant bas-droite
+   Vu en permanence → motion minimale (claude.md §5).
+   ============================================================= */
+
+.fab {
+  position: fixed;
+  right: clamp(1rem, 4vw, 2rem);
+  bottom: clamp(1rem, 4vw, 2rem);
+  z-index: var(--z-header);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+
+  color: #fff;
+  background: #25d366; /* vert officiel WhatsApp */
+  box-shadow:
+    0 1px 2px hsl(var(--color-shadow) / 0.24),
+    0 12px 28px -8px hsl(145 63% 25% / 0.5);
+
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) ease,
+    opacity var(--dur-base) ease;
+
+  /* Fondu discret au montage — évite le pop brutal, pas de mouvement */
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.icon {
+  display: block;
+}
+
+.fab:active {
+  transform: scale(0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fab:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 2px 4px hsl(var(--color-shadow) / 0.24),
+      0 16px 34px -8px hsl(145 63% 25% / 0.55);
+  }
+}
+
+/* Cède la place au CTA « Devis » sticky éventuel sur très petits écrans */
+@media (max-width: 400px) {
+  .fab {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab {
+    transition: opacity var(--dur-base) ease;
+  }
+  .fab:active,
+  .fab:hover {
+    transform: none;
+  }
+}

@@ -8,13 +8,14 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
+  width: 100%;
   background: var(--color-bg);
 }
 
 .card {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
+  height: clamp(18rem, 22vw, 23rem);
   overflow: hidden;
   background: var(--color-surface-2);
   isolation: isolate;
@@ -61,8 +62,17 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-1);
-  padding: var(--space-5);
+  padding: var(--space-6);
   text-align: start;
+}
+
+/* Cartes de bord : le texte s'aligne sur la gouttière de la page. */
+.card:first-child .body {
+  padding-left: max(var(--space-6), calc((100vw - var(--container-max)) / 2));
+}
+
+.card:last-child .body {
+  padding-right: max(var(--space-6), calc((100vw - var(--container-max)) / 2));
 }
 
 /* Sur-titre : petit, blanc, majuscules espacées, précédé d'un trait bleu */

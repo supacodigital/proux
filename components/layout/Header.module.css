@@ -38,6 +38,17 @@
   flex-shrink: 0;
   border-radius: var(--radius);
   display: inline-flex;
+  align-items: center;
+}
+
+/* Logo agrandi sur le hero transparent : il peut déborder la barre
+   sans en pousser la hauteur. */
+.transparent .brand {
+  align-self: center;
+}
+
+.transparent .brand :global(img) {
+  margin-block: calc(-1 * var(--space-3));
 }
 
 /* — Bloc de droite : nav + actions groupées — */
@@ -212,24 +223,18 @@
   visibility: visible;
 }
 
-/* Rail = même gabarit que le contenu de page, panneau calé à droite. */
+/* Panneau pleine largeur : bord à bord sous le header. */
 .megaTrack {
   width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--container-pad);
-  display: flex;
-  justify-content: flex-end;
+  display: block;
 }
 
 .megaInner {
   position: relative;
   width: 100%;
-  max-width: 60rem;
-  margin-top: var(--space-1);
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
@@ -243,10 +248,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  top: var(--header-h); /* n'assombrit que la zone sous le header */
+  top: var(--header-h); /* ne couvre / ne floute que la zone sous le header */
   z-index: 1;
   width: 100%;
-  background: hsl(var(--color-shadow) / 0.22);
+  background: hsl(var(--color-shadow) / 0.14);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-base) ease;
@@ -255,6 +262,14 @@
 .backdrop[data-open] {
   opacity: 1;
   pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: hsl(var(--color-shadow) / 0.22);
+  }
 }
 
 /* — Breakpoints — */

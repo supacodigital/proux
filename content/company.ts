@@ -25,6 +25,11 @@ export const company = {
   tagline:
     "Nettoyage de toiture, façades et peinture extérieure dans l’Ain et le Pays de Gex.",
 
+  // Accroche du hero (sous le logo).
+  // TODO(client) : confirmer « entreprise familiale / de père en fils » +
+  // le nombre d'années d'ancienneté (20 = valeur provisoire à valider).
+  heroPitch: "Entreprise familiale, de père en fils depuis plus de 20 ans.",
+
   // — Contact —
   phone: {
     // TODO(client) : numéro à reconfirmer avant mise en ligne (cf. claude.md §2)
@@ -38,6 +43,15 @@ export const company = {
     href: "mailto:contact@proux.fr",
     confirmed: false,
   },
+  whatsapp: {
+    // TODO(client) : numéro de mobile WhatsApp réel (le fixe 04… ne marche pas
+    // sur WhatsApp). En attendant : même numéro que le téléphone, format E.164.
+    number: "33482297321",
+    href: "https://wa.me/33482297321",
+    // Message pré-rempli côté client
+    message: "Bonjour, je souhaite un devis gratuit pour…",
+    confirmed: false,
+  },
   address: {
     // TODO(client) : adresse complète (SEO local + Google Business + mentions légales)
     locality: "Pays de Gex",
@@ -48,7 +62,7 @@ export const company = {
   },
 
   // — Zone d’intervention (résumé affichable) —
-  area: "Ain (01) & Pays de Gex",
+  area: "Pays de Gex",
   areaLong:
     "Département de l’Ain et bassin franco-genevois : Pays de Gex, Bellegarde, Saint-Genis-Pouilly et alentours.",
 

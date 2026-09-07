@@ -13,6 +13,8 @@
   height: 100svh;
   margin-top: calc(-1 * var(--header-h));
   padding-top: var(--header-h);
+  /* réserve la place du bandeau TrustBar ancré en bas (une ligne) */
+  padding-bottom: var(--space-12);
   overflow: hidden;
   background: var(--color-navy-900);
   color: var(--color-on-dark);
@@ -29,7 +31,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 45%;
+  object-position: 50% 50%;
 }
 
 /* Assombrissement neutre léger + renforts haut/bas (header, CTA).
@@ -43,11 +45,7 @@
       hsl(220 15% 5% / 0.55) 0%,
       hsl(220 15% 5% / 0) 24%
     ),
-    linear-gradient(
-      to top,
-      hsl(220 15% 5% / 0.6) 0%,
-      hsl(220 15% 5% / 0) 32%
-    ),
+    linear-gradient(to top, hsl(220 15% 5% / 0.6) 0%, hsl(220 15% 5% / 0) 32%),
     hsl(220 12% 5% / 0.44);
 }
 
@@ -58,36 +56,33 @@
   align-items: center;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #fff;
-  margin-bottom: var(--space-5);
-  text-shadow: 0 1px 12px hsl(220 30% 4% / 0.6);
-}
-
-.eyebrow::before,
-.eyebrow::after {
-  content: "";
-  width: 1.75rem;
-  height: 2px;
-  border-radius: 1px;
-  background: var(--color-accent);
-}
-
 .logo {
-  width: min(90vw, 640px);
+  width: min(82vw, 540px);
   height: auto;
   filter: drop-shadow(0 2px 24px hsl(220 30% 4% / 0.45));
 }
 
+.pitch {
+  margin-top: var(--space-5);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 1px 14px hsl(220 30% 4% / 0.6);
+}
+
+/* Écrans étroits : la phrase peut revenir à la ligne plutôt que déborder */
+@media (max-width: 520px) {
+  .pitch {
+    white-space: normal;
+    max-width: 34ch;
+    text-wrap: balance;
+    font-size: var(--text-base);
+  }
+}
+
 .actions {
-  margin-top: var(--space-10);
+  margin-top: var(--space-8);
   display: flex;
   flex-wrap: wrap;
   align-items: center;

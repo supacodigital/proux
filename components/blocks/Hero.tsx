@@ -1,9 +1,10 @@
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
 import { QuoteCta } from "@/components/ui/QuoteCta";
 import { company } from "@/content/company";
+import { TrustBar } from "./TrustBar";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -26,13 +27,14 @@ export function Hero() {
       </div>
 
       <Container className={styles.inner}>
-        <p className={styles.eyebrow}>{company.area}</p>
-
         <Logo tone="onDark" height={480} priority className={styles.logo} />
 
         <h1 id="hero-title" className="visually-hidden">
           Votre toiture retrouve son éclat d’origine.
         </h1>
+
+        {/* TODO(client) : confirmer « de père en fils » + le nombre d'années */}
+        <p className={styles.pitch}>{company.heroPitch}</p>
 
         <div className={styles.actions}>
           <QuoteCta size="lg" onDark label="Demander un devis gratuit" />
@@ -47,12 +49,10 @@ export function Hero() {
             <ArrowRight size={18} aria-hidden />
           </Button>
         </div>
-
-        <p className={styles.reassurance}>
-          <ShieldCheck size={16} aria-hidden />
-          Devis gratuit &amp; sans engagement · Intervention dans tout l’Ain
-        </p>
       </Container>
+
+      {/* Bandeau d'arguments ancré en bas du hero (overlay, déroule au scroll) */}
+      <TrustBar />
     </section>
   );
 }

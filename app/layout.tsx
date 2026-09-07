@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { company } from "@/content/company";
 import "@/styles/globals.css";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Header overlay />
         <main id="contenu">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
