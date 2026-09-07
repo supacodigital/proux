@@ -19,18 +19,30 @@ const interTight = Inter_Tight({
   variable: "--font-inter-tight",
 });
 
+const TITLE = `${company.name} — Nettoyage de toiture, façades & peinture extérieure`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl),
   title: {
-    default: `${company.name} — Nettoyage de toiture, façades & peinture extérieure`,
+    default: TITLE,
     template: `%s — ${company.name}`,
   },
   description: company.tagline,
+  alternates: { canonical: "/" },
+  // L'image de partage (og:image / twitter:image) est générée à partir de
+  // `app/opengraph-image.png` (logo PROUX sur fond marine) — Next la câble
+  // automatiquement, ici on ne met que le texte.
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: company.name,
-    title: `${company.name} — Nettoyage de toiture, façades & peinture extérieure`,
+    url: "/",
+    title: TITLE,
+    description: company.tagline,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
     description: company.tagline,
   },
   robots: { index: true, follow: true },
