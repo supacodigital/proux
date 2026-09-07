@@ -1,0 +1,244 @@
+/* QuoteForm — formulaire de demande de devis (brief §8) */
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* — Champ — */
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  font: inherit;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition:
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233d4753' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+.input:focus-visible,
+.select:focus-visible,
+.textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+.field[data-error] .input,
+.field[data-error] .select,
+.field[data-error] .textarea {
+  border-color: #c0392b;
+}
+
+.error {
+  font-size: var(--text-sm);
+  color: #c0392b;
+}
+
+/* — Erreur globale — */
+.formError {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: #fdecea;
+  color: #b0281a;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.formError:focus-visible {
+  outline: 2px solid #c0392b;
+  outline-offset: 2px;
+}
+
+/* — Consentement RGPD — */
+.consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-3);
+  align-items: start;
+}
+
+.checkbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.consentLabel {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-ink-soft);
+}
+
+.consentLabel a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent[data-error] .consentLabel {
+  color: var(--color-ink);
+}
+
+.consent .error {
+  grid-column: 1 / -1;
+}
+
+/* — Honeypot (hors écran, pas display:none pour rester rempli par les bots) — */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* — Bouton d'envoi (forme CTA maison) — */
+.submit {
+  --cut: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  align-self: start;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-navy);
+  border-radius: var(--radius);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
+  );
+  box-shadow:
+    0 1px 2px hsl(var(--color-shadow) / 0.24),
+    0 12px 28px -12px hsl(var(--color-shadow) / 0.5);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    background-color var(--dur-base) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .submit:hover:not(:disabled) {
+    background: var(--color-navy-700);
+  }
+}
+
+.submit:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.spinner {
+  animation: qf-spin 0.7s linear infinite;
+}
+
+@keyframes qf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.note {
+  font-size: var(--text-sm);
+  color: var(--color-ink-mute);
+}
+
+/* — État de succès — */
+.success {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-8);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-full);
+  color: #fff;
+  background: var(--color-success);
+}
+
+.successTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.successHint {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+.successHint a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.4s;
+  }
+  .submit:active:not(:disabled) {
+    transform: none;
+  }
+}

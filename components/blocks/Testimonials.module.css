@@ -1,0 +1,275 @@
+/* Testimonials — bandeau d'avis Google défilant (ruban linéaire) */
+
+.head {
+  max-width: 46rem;
+  margin-bottom: var(--space-10);
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  color: var(--color-navy);
+}
+
+/* Résumé note + étoiles */
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.rating {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.summaryText {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+/* — Étoiles — */
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  line-height: 1;
+}
+
+.starOn {
+  color: #fbbc04;
+  fill: #fbbc04;
+}
+
+.starOff {
+  color: var(--color-border);
+  fill: var(--color-border);
+}
+
+/* — Ruban — */
+.viewport {
+  overflow: hidden;
+  padding-block: var(--space-2);
+  margin-inline: calc(-1 * var(--container-pad));
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 4%,
+    #000 96%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 4%,
+    #000 96%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: reviews-scroll 90s linear infinite;
+}
+
+@keyframes reviews-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.wrap:hover .track,
+.wrap:focus-within .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-4);
+  padding-inline: calc(var(--space-4) / 2);
+}
+
+/* — Carte avis (style Google) — */
+.card {
+  flex-shrink: 0;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.quoteMark {
+  margin-left: auto;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 0.6;
+  color: var(--color-border);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.who {
+  min-width: 0;
+}
+
+.name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.125rem;
+  font-size: var(--text-xs);
+  color: var(--color-ink-mute);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.when {
+  font-size: var(--text-xs);
+  color: var(--color-ink-mute);
+}
+
+.badgeNew {
+  margin-left: auto;
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.text {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+
+  /* Tronque proprement les avis très longs dans le ruban */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.visited {
+  margin-top: auto;
+  font-size: var(--text-xs);
+  color: var(--color-ink-mute);
+}
+
+/* — Lien final — */
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.more svg {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .more:hover svg {
+    transform: translate(2px, -2px);
+  }
+}
+
+.moreTodo {
+  margin-top: var(--space-8);
+  font-size: var(--text-sm);
+  color: var(--color-ink-mute);
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 22rem;
+  }
+}
+
+/* Mouvement réduit : ruban figé, on montre une rangée statique
+   (les cartes qui débordent sont accessibles au scroll horizontal). */
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: none;
+  }
+
+  .viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .group[aria-hidden] {
+    display: none;
+  }
+}

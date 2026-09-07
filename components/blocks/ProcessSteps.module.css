@@ -1,0 +1,163 @@
+/* ProcessSteps — « Notre méthode », ligne horizontale numérotée */
+
+.head {
+  max-width: 46rem;
+  margin-bottom: var(--space-16);
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  color: var(--color-navy);
+}
+
+.intro {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+}
+
+/* — Étapes — */
+.steps {
+  display: grid;
+  gap: var(--space-10);
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Pastille numéro + icône */
+.marker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+}
+
+.num {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  display: grid;
+  place-items: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--color-accent);
+}
+
+.stepTitle {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.stepBody {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+  max-width: 34ch;
+}
+
+/* — Desktop : 4 colonnes reliées par un trait — */
+@media (min-width: 900px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+  }
+
+  .step {
+    gap: var(--space-4);
+  }
+
+  /* trait de liaison : du bord droit de la pastille jusqu'à la pastille suivante */
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1.5rem;
+    left: 3.5rem;
+    width: calc(100% - 3.5rem + var(--space-8));
+    height: 2px;
+    background: var(--color-border);
+    transform: translateY(-1px);
+  }
+
+  .stepTitle {
+    font-size: var(--text-xl);
+  }
+}
+
+/* — Mobile : timeline verticale, texte indenté à droite de la pastille — */
+@media (max-width: 899px) {
+  .steps {
+    gap: var(--space-8);
+  }
+
+  .step {
+    grid-template-columns: 3rem 1fr;
+    column-gap: var(--space-4);
+    row-gap: var(--space-2);
+    align-items: start;
+  }
+
+  .marker {
+    grid-row: 1 / span 2;
+  }
+
+  .stepTitle {
+    align-self: center;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: calc(1.5rem - 1px);
+    top: 3.5rem;
+    bottom: calc(-1 * var(--space-8) - 0.5rem);
+    width: 2px;
+    background: var(--color-border);
+  }
+}

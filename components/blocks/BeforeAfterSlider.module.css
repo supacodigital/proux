@@ -1,0 +1,143 @@
+/* =============================================================
+   BeforeAfterSlider — comparateur avant / après
+   L'image « après » est clippée par --pos (0–100 %).
+   Pendant le drag : aucune transition (colle au pointeur).
+   ============================================================= */
+
+.root {
+  --pos: 50%;
+
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-2);
+  user-select: none;
+  touch-action: pan-y; /* le geste vertical scrolle la page, l'horizontal glisse */
+  cursor: ew-resize;
+  isolation: isolate;
+}
+
+.img {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Calque « avant » : révélé de la gauche jusqu'à --pos.
+   Au-delà de --pos, on laisse voir le fond (« après »). */
+.beforeClip {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  transition: clip-path var(--dur-base) var(--ease-out);
+}
+
+.root[data-dragging] .beforeClip {
+  transition: none;
+}
+
+/* Étiquettes Avant / Après */
+.tag {
+  position: absolute;
+  top: var(--space-3);
+  z-index: 2;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: hsl(213 45% 12% / 0.72);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.tagBefore {
+  left: var(--space-3);
+}
+
+.tagAfter {
+  right: var(--space-3);
+  background: hsl(213 70% 20% / 0.78);
+}
+
+/* Poignée verticale */
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  z-index: 3;
+  width: 2px;
+  transform: translateX(-50%);
+  transition: left var(--dur-base) var(--ease-out);
+}
+
+.root[data-dragging] .handle {
+  transition: none;
+}
+
+.handleLine {
+  position: absolute;
+  inset: 0;
+  width: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  box-shadow: 0 0 0 1px hsl(213 40% 10% / 0.25);
+}
+
+.handleGrip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  color: var(--color-navy);
+  background: #fff;
+  box-shadow: var(--shadow);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.handle:active .handleGrip {
+  transform: translate(-50%, -50%) scale(0.94);
+}
+
+.handle:focus-visible {
+  outline: none;
+}
+
+.handle:focus-visible .handleGrip {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .root:hover .handleGrip {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  .root[data-dragging]:hover .handleGrip,
+  .handle:active .handleGrip {
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+}
+
+/* Mouvement réduit : on garde le clip animé (aide à comprendre),
+   on retire le rebond de la poignée. */
+@media (prefers-reduced-motion: reduce) {
+  .handleGrip,
+  .root:hover .handleGrip,
+  .handle:active .handleGrip {
+    transition: none;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Sans JS, `--pos` reste à 50 % : les deux moitiés (Avant à gauche,
+   Après à droite) et les étiquettes restent visibles → compréhensible. */

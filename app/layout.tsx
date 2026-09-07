@@ -59,8 +59,9 @@ export default function RootLayout({
         <a href="#contenu" className="skip-link">
           Aller au contenu
         </a>
-        {/* overlay : le hero de la home est sombre, header transparent au repos */}
-        <Header overlay />
+        {/* Le Header gère lui-même l'overlay : transparent sur la home
+            (hero sombre), solide sur les autres pages. */}
+        <Header />
         <main id="contenu">{children}</main>
         <Footer />
         <WhatsAppButton />

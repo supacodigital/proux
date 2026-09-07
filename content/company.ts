@@ -75,16 +75,33 @@ export const company = {
     experience: { label: "Artisan local", confirmed: true },
   },
 
-  // TODO(client) : chiffres réels — placeholders en attendant
+  // Chiffres-clés (section « Chiffres » de la home). Confirmés avec le client
+  // le 2026-09-07, sauf la note Google (voir `reviews`).
   stats: {
-    yearsExperience: null as number | null, // ex. 12
-    projectsCount: null as number | null, // ex. 450
+    yearsExperience: 20,
+    /** arrondi communicable — « + de 500 chantiers » */
+    projectsCount: 500,
+  },
+
+  // Avis Google (voir content/testimonials.ts pour le détail des avis).
+  // TODO(client) : nombre d'avis exact affiché sur la fiche + URL de la fiche.
+  reviews: {
+    rating: 4.9,
+    /** au moins ce nombre d'avis 5★ collectés (2026-09-07) — mettre le total réel */
+    count: null as number | null,
+    minCount: 15,
+    confirmed: false,
   },
 
   // — Liens externes —
   links: {
-    // TODO(client) : URL de la fiche Google Business
-    googleBusiness: null as string | null,
+    // TODO(client) : remplacer par l'URL courte et stable de la fiche Google
+    // (type https://g.page/... ou .../maps/place/...). Le lien ci-dessous est
+    // une page de résultats de recherche « Proux … Avis » — fonctionnelle mais
+    // moins pérenne.
+    googleBusiness:
+      "https://www.google.com/search?q=Proux+nettoyage+r%C3%A9novation+Avis&hl=fr-FR",
+    googleReviewsConfirmed: false,
     facebook: null as string | null,
     instagram: null as string | null,
   },

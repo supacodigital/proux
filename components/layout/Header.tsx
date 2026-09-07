@@ -14,15 +14,22 @@ import { primaryNav } from "@/content/company";
 import styles from "./Header.module.css";
 
 type HeaderProps = {
-  /** true sur les pages au hero sombre : header transparent au repos */
+  /**
+   * Force le header transparent au repos (pages au hero sombre).
+   * Par défaut, l'overlay n'est actif que sur la home (`/`), qui a un
+   * hero vidéo plein écran ; partout ailleurs le header est solide.
+   */
   overlay?: boolean;
 };
 
 type PanelId = "prestations";
 const HOVER_CLOSE_DELAY = 180;
+/** Pages dont le hero est sombre → header transparent au repos */
+const OVERLAY_ROUTES = new Set(["/"]);
 
-export function Header({ overlay = false }: HeaderProps) {
+export function Header({ overlay }: HeaderProps) {
   const pathname = usePathname();
+  const wantsOverlay = overlay ?? OVERLAY_ROUTES.has(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState<PanelId | null>(null);
@@ -124,7 +131,7 @@ export function Header({ overlay = false }: HeaderProps) {
   // Le méga-menu ouvert ne solidifie PAS le header : il reste transparent
   // sur le hero (liens blancs). En revanche le menu mobile ouvert force
   // la barre en blanc opaque (même barre, autres couleurs).
-  const solid = !overlay || scrolled || menuOpen;
+  const solid = !wantsOverlay || scrolled || menuOpen;
 
   return (
     <header
