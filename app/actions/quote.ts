@@ -81,7 +81,7 @@ export async function submitQuote(
     return {
       status: "error",
       message:
-        "L’envoi a échoué. Réessayez, ou appelez-nous directement au 04 82 29 73 21.",
+        "L’envoi a échoué. Réessayez, ou appelez-nous directement au 07 61 44 99 40.",
       values,
     };
   }

@@ -69,7 +69,7 @@ export async function sendQuoteAcknowledgement(data: QuoteInput) {
 Nous avons bien reçu votre demande de devis (${data.prestation} — ${data.location}).
 Un artisan PROUX vous rappelle sous 48 h.
 
-Pour toute urgence, vous pouvez nous joindre au 04 82 29 73 21.
+Pour toute urgence, vous pouvez nous joindre au 07 61 44 99 40.
 
 À très vite,
 PROUX — Peinture · Nettoyage · Toiture`;

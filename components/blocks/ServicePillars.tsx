@@ -113,7 +113,7 @@ export function ServicePillars() {
 
               <div className={styles.body}>
                 <h3 className={styles.cardTitle}>
-                  <Link href={pole.href}>{pole.label}</Link>
+                  <Link href={pole.href}>{pole.homeTitle ?? pole.label}</Link>
                 </h3>
                 <p className={styles.tagline}>{pole.tagline}</p>
 

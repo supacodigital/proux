@@ -17,6 +17,8 @@ export type SubService = {
 export type Pole = {
   key: "toiture" | "nettoyage" | "peinture";
   label: string;
+  /** titre affiché sur la carte de la home (défaut : `label`) */
+  homeTitle?: string;
   /** sur-titre court affiché au-dessus du titre dans le méga-menu */
   kicker: string;
   href: string;
@@ -35,6 +37,7 @@ export const poles: Pole[] = [
   {
     key: "toiture",
     label: "Toiture",
+    homeTitle: "Nettoyage toiture",
     kicker: "Couverture & étanchéité",
     href: "/toiture",
     tagline: "Démoussage, hydrofuge et réparations de couverture.",

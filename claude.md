@@ -46,7 +46,7 @@ devis clair) avant d'appeler.
 | Baseline | **Peinture · Nettoyage · Toiture** | Reprise du logo. Ordre à l'affichage : on peut réordonner en « Toiture · Nettoyage · Peinture » selon le poids commercial — à trancher avec le client. |
 | Métier | Nettoyage / démoussage de toiture, traitement hydrofuge, nettoyage façades & extérieurs, peinture extérieure, petite réfection toiture | |
 | Zone | Département de l'Ain (01) + bassin franco-genevois / Pays de Gex / frontière suisse | Photos de chantiers : maisons type savoyard, vue sur montagnes → zone Gex / Bellegarde / Saint-Genis. |
-| Téléphone | `04 82 29 73 21` | **À reconfirmer avec le client** avant mise en ligne. Peut-être aussi un portable. |
+| Téléphone | `07 61 44 99 40` | Mobile confirmé par le client le 2026-09-07. Sert aussi de numéro WhatsApp. |
 | Email | _à obtenir_ | Placeholder `contact@proux.fr` en dev, `TODO` visible. |
 | Adresse | _à obtenir_ | Nécessaire pour le SEO local + fiche Google Business + mentions légales. |
 | SIRET | _à obtenir_ | Mentions légales. |

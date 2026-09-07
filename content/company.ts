@@ -32,10 +32,10 @@ export const company = {
 
   // — Contact —
   phone: {
-    // TODO(client) : numéro à reconfirmer avant mise en ligne (cf. claude.md §2)
-    display: "04 82 29 73 21",
-    href: "tel:+33482297321",
-    confirmed: false,
+    // Numéro fourni par le client le 2026-09-07.
+    display: "07 61 44 99 40",
+    href: "tel:+33761449940",
+    confirmed: true,
   },
   email: {
     // TODO(client) : adresse e-mail réelle
@@ -44,13 +44,12 @@ export const company = {
     confirmed: false,
   },
   whatsapp: {
-    // TODO(client) : numéro de mobile WhatsApp réel (le fixe 04… ne marche pas
-    // sur WhatsApp). En attendant : même numéro que le téléphone, format E.164.
-    number: "33482297321",
-    href: "https://wa.me/33482297321",
+    // Mobile fourni par le client le 2026-09-07 (format E.164).
+    number: "33761449940",
+    href: "https://wa.me/33761449940",
     // Message pré-rempli côté client
     message: "Bonjour, je souhaite un devis gratuit pour…",
-    confirmed: false,
+    confirmed: true,
   },
   address: {
     // TODO(client) : adresse complète (SEO local + Google Business + mentions légales)
