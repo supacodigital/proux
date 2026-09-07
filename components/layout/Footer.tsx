@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
+import { NavLink } from "@/components/ui/NavLink";
 import { QuoteCta } from "@/components/ui/QuoteCta";
 import { company, footerNav, legalNav } from "@/content/company";
 import styles from "./Footer.module.css";
@@ -58,7 +58,7 @@ export function Footer() {
                 <ul>
                   {col.links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href}>{link.label}</Link>
+                      <NavLink href={link.href}>{link.label}</NavLink>
                     </li>
                   ))}
                 </ul>
@@ -74,7 +74,7 @@ export function Footer() {
           <ul className={styles.legal}>
             {legalNav.map((link) => (
               <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
+                <NavLink href={link.href}>{link.label}</NavLink>
               </li>
             ))}
           </ul>

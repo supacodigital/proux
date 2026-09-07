@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { NavLink } from "@/components/ui/NavLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight, Phone } from "lucide-react";
@@ -66,7 +66,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             const active =
               pathname === pole.href || pathname.startsWith(`${pole.href}/`);
             return (
-              <Link
+              <NavLink
                 key={pole.key}
                 href={pole.href}
                 className={styles.card}
@@ -92,7 +92,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   aria-hidden
                   className={styles.cardArrow}
                 />
-              </Link>
+              </NavLink>
             );
           })}
         </div>
@@ -103,7 +103,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             const active =
               pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
-              <Link
+              <NavLink
                 key={link.href}
                 href={link.href}
                 className={styles.link}
@@ -113,7 +113,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               >
                 <span>{link.label}</span>
                 <ArrowUpRight size={18} aria-hidden className={styles.linkArrow} />
-              </Link>
+              </NavLink>
             );
           })}
         </nav>

@@ -38,7 +38,7 @@ export function QuoteCta({
     .join(" ");
 
   return (
-    <Link href={href} className={cls}>
+    <Link href={href} className={cls} prefetch={false}>
       <span className={styles.label}>{label}</span>
     </Link>
   );

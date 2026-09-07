@@ -34,6 +34,15 @@
   object-position: 50% 50%;
 }
 
+/* Fallback statique quand la vidéo n'est pas chargée (mobile, data saver…) */
+.poster {
+  width: 100%;
+  height: 100%;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* Assombrissement neutre léger + renforts haut/bas (header, CTA).
    Pas de teinte bleue : juste du noir translucide. */
 .scrim {
@@ -94,40 +103,11 @@
   gap: var(--space-2);
 }
 
-.reassurance {
-  margin-top: var(--space-8);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-  color: #fff;
-  text-wrap: balance;
-  text-shadow: 0 1px 12px hsl(220 30% 4% / 0.6);
-}
-
-.reassurance svg {
-  color: var(--color-accent);
-  flex-shrink: 0;
-}
-
 @media (max-width: 560px) {
-  .reassurance {
-    display: none;
-  }
   .actions {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
     max-width: 22rem;
-  }
-}
-
-/* Mouvement réduit : on fige la vidéo sur le poster */
-@media (prefers-reduced-motion: reduce) {
-  .video {
-    display: none;
-  }
-  .media {
-    background: url("/video/hero-poster.jpg") center / cover no-repeat;
   }
 }

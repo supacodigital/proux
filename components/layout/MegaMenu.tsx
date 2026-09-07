@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { NavLink } from "@/components/ui/NavLink";
 import { poles } from "@/content/services";
 import styles from "./MegaMenu.module.css";
 
@@ -9,7 +9,7 @@ export function PrestationsPanel({ onNavigate }: PanelProps) {
   return (
     <div className={styles.panel}>
       {poles.map((pole) => (
-        <Link
+        <NavLink
           key={pole.key}
           href={pole.href}
           className={styles.card}
@@ -34,7 +34,7 @@ export function PrestationsPanel({ onNavigate }: PanelProps) {
             {/* même forme que le CTA du header (bloc marine, coin coupé) */}
             <span className={styles.cta}>Découvrir</span>
           </span>
-        </Link>
+        </NavLink>
       ))}
     </div>
   );

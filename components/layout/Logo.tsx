@@ -35,7 +35,7 @@ export function Logo({
       width={width}
       height={height}
       priority={priority}
-      quality={95}
+      quality={90}
       className={[styles.img, className].filter(Boolean).join(" ")}
       sizes={`${width}px`}
     />

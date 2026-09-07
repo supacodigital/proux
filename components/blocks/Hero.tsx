@@ -4,27 +4,15 @@ import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/Button";
 import { QuoteCta } from "@/components/ui/QuoteCta";
 import { company } from "@/content/company";
+import { HeroVideo } from "./HeroVideo";
 import { TrustBar } from "./TrustBar";
 import styles from "./Hero.module.css";
 
 export function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
-      {/* — Vidéo de fond — */}
-      <div className={styles.media} aria-hidden>
-        <video
-          className={styles.video}
-          poster="/video/hero-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        >
-          <source src="/video/hero.mp4" type="video/mp4" />
-        </video>
-        <div className={styles.scrim} />
-      </div>
+      {/* — Vidéo de fond (lecture forcée en JS pour le mobile) — */}
+      <HeroVideo />
 
       <Container className={styles.inner}>
         <Logo tone="onDark" height={480} priority className={styles.logo} />

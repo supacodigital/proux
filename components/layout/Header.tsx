@@ -8,6 +8,7 @@ import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
 import { PrestationsPanel } from "./MegaMenu";
+import { NavLink } from "@/components/ui/NavLink";
 import { QuoteCta } from "@/components/ui/QuoteCta";
 import { primaryNav } from "@/content/company";
 import styles from "./Header.module.css";
@@ -155,7 +156,7 @@ export function Header({ overlay = false }: HeaderProps) {
 
               if (item.kind === "link") {
                 return (
-                  <Link
+                  <NavLink
                     key={item.label}
                     href={item.href}
                     className={styles.navLink}
@@ -163,7 +164,7 @@ export function Header({ overlay = false }: HeaderProps) {
                     onMouseEnter={closeOnHoverOther}
                   >
                     {item.label}
-                  </Link>
+                  </NavLink>
                 );
               }
 

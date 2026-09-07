@@ -54,9 +54,15 @@ export function Button(props: ButtonProps) {
   const cls = classes(variant, size, tone, className);
 
   if (typeof props.href === "string") {
-    const { href, ...linkRest } = rest as ButtonAsLink;
+    const { href, prefetch, ...linkRest } = rest as ButtonAsLink;
     return (
-      <Link href={href} className={cls} {...linkRest}>
+      <Link
+        href={href}
+        className={cls}
+        // CTA : le prefetch au survol suffit, pas besoin du prefetch viewport
+        prefetch={prefetch ?? false}
+        {...linkRest}
+      >
         {children}
       </Link>
     );
