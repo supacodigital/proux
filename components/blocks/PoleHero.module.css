@@ -1,0 +1,128 @@
+/* PoleHero — hero de section des pages pôle (§7.2).
+   Photo plein cadre + voile marine, header en overlay au-dessus. */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 68vh;
+  min-height: 68svh;
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: calc(var(--header-h) + var(--space-16));
+  padding-bottom: var(--space-16);
+  overflow: hidden;
+  background: var(--color-navy-900);
+  color: var(--color-on-dark);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+/* Voile : renfort haut (header) + assise marine bas (texte lisible).
+   Teinte de fond globale pour tenir même sur les clichés très clairs. */
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      to bottom,
+      hsl(213 55% 8% / 0.66) 0%,
+      hsl(213 55% 8% / 0) 34%
+    ),
+    linear-gradient(
+      to top,
+      hsl(213 60% 7% / 0.85) 0%,
+      hsl(213 60% 7% / 0.2) 58%
+    ),
+    hsl(213 45% 10% / 0.28);
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.kicker {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-soft);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: var(--text-4xl);
+  max-width: 18ch;
+  color: #fff;
+  text-shadow: 0 1px 20px hsl(213 40% 4% / 0.45);
+}
+
+.pitch {
+  margin-top: var(--space-5);
+  max-width: 46ch;
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-on-dark);
+  text-shadow: 0 1px 14px hsl(213 40% 4% / 0.5);
+}
+
+.actions {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.75rem 0.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.secondary svg {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .secondary:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .secondary svg {
+    transition: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    min-height: 60svh;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .secondary {
+    justify-content: center;
+  }
+}

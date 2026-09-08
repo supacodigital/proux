@@ -45,3 +45,86 @@ export const faq: FaqItem[] = [
       "Oui, le travail est garanti et nous restons joignables après l’intervention. Le traitement hydrofuge protège durablement contre l’eau et la reprise de mousse ; sa durée dépend de l’exposition de votre toit et du produit appliqué.",
   },
 ];
+
+/* =============================================================
+   FAQ par pôle (pages /toiture, /nettoyage, /peinture — §7.2).
+   4-5 questions ciblées sur le pôle. Alimentent aussi un JSON-LD
+   FAQPage propre à chaque page.
+   ============================================================= */
+
+export const faqByPole: Record<
+  "toiture" | "nettoyage" | "peinture",
+  FaqItem[]
+> = {
+  toiture: [
+    {
+      question: "Faut-il vraiment traiter la toiture après le démoussage ?",
+      answer:
+        "C’est fortement conseillé. Sans anti-mousse, la mousse repousse en un à deux ans. L’hydrofuge, lui, empêche l’eau de pénétrer dans la tuile et ralentit encore le retour de la mousse. Un démoussage seul est une solution de court terme ; démoussage + traitement, c’est plusieurs années de tranquillité.",
+    },
+    {
+      question: "La haute pression risque-t-elle d’abîmer mes tuiles ?",
+      answer:
+        "Oui, sur une tuile ancienne ou poreuse, la haute pression peut retirer la couche de surface et accélérer l’usure. C’est pour ça qu’on juge l’état de la couverture avant de commencer et qu’on passe en basse pression et au brossage dès que la tuile est fragile.",
+    },
+    {
+      question: "L’hydrofuge coloré change-t-il beaucoup la couleur du toit ?",
+      answer:
+        "Il ravive la teinte d’origine plutôt qu’il ne la transforme : une tuile rouge délavée retrouve un rouge profond. On vous montre des exemples et on peut appliquer le produit sur une zone témoin avant de traiter toute la toiture.",
+    },
+    {
+      question: "Intervenez-vous sur les petites réparations, pas seulement le nettoyage ?",
+      answer:
+        "Oui. Remplacement de tuiles cassées, réfection de faîtage, reprise des solins autour de la cheminée, rejointoiement de souche : on traite les points qui laissent passer l’eau. Pour une réfection lourde de charpente ou de couverture complète, on vous oriente vers un couvreur spécialisé.",
+    },
+    {
+      question: "Combien de temps dure la protection hydrofuge ?",
+      answer:
+        "Plusieurs années, selon l’exposition de votre toit (orientation, arbres à proximité, altitude) et le produit appliqué. On refait le point avec vous à la fin du chantier et on reste joignables ensuite.",
+    },
+  ],
+  nettoyage: [
+    {
+      question: "Le nettoyage haute pression peut-il décaper mon enduit de façade ?",
+      answer:
+        "Sur un enduit fragile, oui. On nettoie donc les façades en basse pression, avec un traitement anti-mousse qui fait le travail en profondeur. La haute pression est réservée aux supports qui le supportent, comme certains bétons.",
+    },
+    {
+      question: "Les traces vertes et noires vont-elles revenir ?",
+      answer:
+        "Elles reviennent d’autant plus vite que la surface reste humide et ombragée. Le traitement anti-mousse qu’on applique ralentit nettement la repousse. Sur une façade ou une terrasse, un hydrofuge en complément espace encore les nettoyages.",
+    },
+    {
+      question: "Faut-il libérer la terrasse ou déplacer les plantes ?",
+      answer:
+        "On vous demande de dégager le mobilier léger ; on s’occupe de protéger ce qui reste et la végétation en bordure. Pour une terrasse en bois, prévoyez aussi de laisser sécher plusieurs jours avant de tout réinstaller si on applique un saturateur.",
+    },
+    {
+      question: "Ma terrasse en bois est très grise, peut-on la récupérer ?",
+      answer:
+        "Dans la plupart des cas, oui. Un dégriseur retire la couche grise oxydée et redonne au bois sa teinte chaude ; un saturateur la fixe ensuite. On juge sur place : si des lames sont fendues ou vrillées, on vous le dit franchement.",
+    },
+  ],
+  peinture: [
+    {
+      question: "Pourquoi ma précédente peinture de façade s’est-elle écaillée ?",
+      answer:
+        "Presque toujours à cause d’un support mal préparé : peinture appliquée sur un enduit sale, humide, farinant, ou sans sous-couche adaptée. On nettoie, on traite, on rebouche et on ponce avant de peindre — c’est ce qui fait tenir le résultat.",
+    },
+    {
+      question: "À quelle saison peut-on peindre à l’extérieur ?",
+      answer:
+        "Du printemps à l’automne, hors gel, hors forte chaleur et sur support sec. Dans l’Ain et le Pays de Gex, la fenêtre va en général d’avril à octobre. On cale le chantier sur une période météo favorable.",
+    },
+    {
+      question: "Peinture ou lasure pour mes volets et boiseries en bois ?",
+      answer:
+        "La lasure et le saturateur laissent respirer le bois et ne cloquent pas ; ils demandent un entretien plus régulier. La peinture microporeuse couvre davantage et tient plus longtemps, mais se refait entièrement le moment venu. On vous conseille selon l’état du bois et le rendu que vous voulez.",
+    },
+    {
+      question: "Repeignez-vous aussi les sous-faces de toit et les rives ?",
+      answer:
+        "Oui, c’est une demande fréquente. Sous-faces, planches de rive, débords : on les nettoie, on les ponce et on les remet en peinture avec un produit qui résiste à l’humidité sous la toiture.",
+    },
+  ],
+};

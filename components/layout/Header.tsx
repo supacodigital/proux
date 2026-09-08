@@ -25,7 +25,7 @@ type HeaderProps = {
 type PanelId = "prestations";
 const HOVER_CLOSE_DELAY = 180;
 /** Pages dont le hero est sombre → header transparent au repos */
-const OVERLAY_ROUTES = new Set(["/"]);
+const OVERLAY_ROUTES = new Set(["/", "/toiture", "/nettoyage", "/peinture"]);
 
 export function Header({ overlay }: HeaderProps) {
   const pathname = usePathname();
