@@ -17,8 +17,10 @@ const BUILT_ROUTES = new Set<string>([
   "/nettoyage",
   "/peinture",
   "/a-propos",
+  "/mentions-legales",
+  "/politique-confidentialite",
   // "/realisations",
-  // "/zone-intervention", "/mentions-legales", "/politique-confidentialite",
+  // "/zone-intervention",
 ]);
 
 type NavLinkProps = LinkProps &
