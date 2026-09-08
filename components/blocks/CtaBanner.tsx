@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { Phone } from "lucide-react";
 import { useInView } from "@/lib/useInView";
 import { company } from "@/content/company";
+import { QuoteFormSkeleton } from "./QuoteFormSkeleton";
 import styles from "./CtaBanner.module.css";
 
 /* Le formulaire (zod + logique) n'est chargé qu'au scroll : il est tout
@@ -11,7 +12,7 @@ import styles from "./CtaBanner.module.css";
 const QuoteForm = dynamic(
   () => import("./QuoteForm").then((m) => m.QuoteForm),
   {
-    loading: () => <div className={styles.skeleton} aria-hidden />,
+    loading: () => <QuoteFormSkeleton />,
   },
 );
 
@@ -42,11 +43,7 @@ export function CtaBanner() {
       </div>
 
       <div ref={ref} className={styles.formCol}>
-        {inView ? (
-          <QuoteForm />
-        ) : (
-          <div className={styles.skeleton} aria-hidden />
-        )}
+        {inView ? <QuoteForm /> : <QuoteFormSkeleton />}
       </div>
     </div>
   );

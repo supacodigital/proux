@@ -64,11 +64,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Réserve la hauteur du formulaire pendant son chargement (évite le CLS) */
-.skeleton {
-  min-height: 32rem;
-}
-
 @media (min-width: 900px) {
   .wrap {
     grid-template-columns: 1fr 1.1fr;

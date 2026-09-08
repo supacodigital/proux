@@ -7,6 +7,7 @@ import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { submitQuote, type QuoteState } from "@/app/actions/quote";
 import { PRESTATION_OPTIONS } from "@/lib/validation";
 import { company } from "@/content/company";
+import { QuoteFormSkeleton } from "./QuoteFormSkeleton";
 import styles from "./QuoteForm.module.css";
 
 const initialState: QuoteState = { status: "idle" };
@@ -72,11 +73,13 @@ function SubmitButton() {
 export function QuoteForm() {
   const [state, formAction] = useActionState(submitQuote, initialState);
   const [ts, setTs] = useState("");
+  const [hydrated, setHydrated] = useState(false);
   const statusRef = useRef<HTMLParagraphElement>(null);
   const consentId = useId();
 
   useEffect(() => {
     setTs(String(Date.now()));
+    setHydrated(true);
   }, []);
 
   useEffect(() => {
@@ -102,11 +105,15 @@ export function QuoteForm() {
     );
   }
 
+  if (!hydrated) {
+    return <QuoteFormSkeleton />;
+  }
+
   const v = state.values ?? {};
   const e = state.errors ?? {};
 
   return (
-    <form action={formAction} className={styles.form} noValidate>
+    <form action={formAction} className={styles.form} data-hydrated noValidate>
       {state.status === "error" && state.message && (
         <p
           ref={statusRef}
