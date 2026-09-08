@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-import { NavLink } from "@/components/ui/NavLink";
 import { featuredProjects } from "@/content/projects";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import styles from "./FeaturedWork.module.css";
@@ -7,7 +5,7 @@ import styles from "./FeaturedWork.module.css";
 /**
  * Section « Avant / Après vedette » (home, claude.md §7.1).
  * La transformation EST le message : 3 comparateurs plein cadre,
- * légende sobre, lien vers /realisations.
+ * légende sobre.
  */
 export function FeaturedWork() {
   return (
@@ -44,11 +42,6 @@ export function FeaturedWork() {
           </li>
         ))}
       </ul>
-
-      <NavLink href="/realisations" className={styles.more}>
-        Voir toutes nos réalisations
-        <ArrowRight size={18} aria-hidden />
-      </NavLink>
     </div>
   );
 }

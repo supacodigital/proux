@@ -58,7 +58,7 @@ export function PolePage({ poleKey }: { poleKey: Pole["key"] }) {
       </Section>
 
       {pole.methodNote && (
-        <Section aria-label={pole.methodNote.title}>
+        <Section id="methode" aria-label={pole.methodNote.title}>
           <MethodNote note={pole.methodNote} />
         </Section>
       )}

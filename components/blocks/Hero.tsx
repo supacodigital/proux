@@ -27,13 +27,13 @@ export function Hero() {
         <div className={styles.actions}>
           <QuoteCta size="lg" onDark label="Demander un devis gratuit" />
           <Button
-            href="/realisations"
+            href="/#methode"
             size="lg"
             variant="secondary"
             tone="onDark"
             className={styles.secondary}
           >
-            Voir nos réalisations
+            Voir notre méthode
             <ArrowRight size={18} aria-hidden />
           </Button>
         </div>

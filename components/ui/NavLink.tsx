@@ -13,8 +13,11 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 const BUILT_ROUTES = new Set<string>([
   "/",
   "/contact",
-  // "/toiture", "/nettoyage", "/peinture",
-  // "/realisations", "/a-propos",
+  "/toiture",
+  "/nettoyage",
+  "/peinture",
+  "/a-propos",
+  // "/realisations",
   // "/zone-intervention", "/mentions-legales", "/politique-confidentialite",
 ]);
 

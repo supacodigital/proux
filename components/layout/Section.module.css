@@ -2,6 +2,12 @@
   padding-block: var(--space-16);
 }
 
+/* Une section ciblée par une ancre (#methode, #faq…) se cale sous le
+   header sticky au lieu de coller au bord haut du viewport. */
+.section[id] {
+  scroll-margin-top: calc(var(--header-h) + var(--space-4));
+}
+
 @media (min-width: 768px) {
   .section {
     padding-block: var(--space-24);

@@ -10,8 +10,9 @@ import { Section } from "@/components/layout/Section";
 
 /**
  * Accueil — sections (cf. claude.md §7.1) :
- * Hero ✓ (+ TrustBar) · 3 pôles ✓ · Avant/Après ✓ · Méthode ✓ · Chiffres ✓ ·
- * Avis ✓ · FAQ ✓ · CtaBanner ✓ (formulaire de devis).
+ * Hero ✓ (+ TrustBar) · 3 pôles ✓ · Avant/Après ✓ · Méthode ✓ · FAQ ✓ ·
+ * Chiffres ✓ · Avis ✓ · CtaBanner ✓ (formulaire de devis).
+ * Méthode et FAQ sont enchaînées (ancres #methode / #faq du header).
  * (Section « zone d'intervention » sur la home volontairement sautée — le SEO
  *  local passe par les pages /zone-intervention/[commune] + JSON-LD areaServed.)
  */
@@ -25,17 +26,17 @@ export default function HomePage() {
       <Section tone="surface" aria-labelledby="featured-title">
         <FeaturedWork />
       </Section>
-      <Section aria-labelledby="process-title">
+      <Section id="methode" aria-labelledby="process-title">
         <ProcessSteps />
       </Section>
-      <Section tone="surface" aria-labelledby="stats-title">
+      <Section id="faq" tone="surface" aria-labelledby="faq-title">
+        <FaqList />
+      </Section>
+      <Section aria-labelledby="stats-title">
         <StatsRow />
       </Section>
-      <Section aria-labelledby="reviews-title">
+      <Section tone="surface" aria-labelledby="reviews-title">
         <Testimonials />
-      </Section>
-      <Section tone="surface" aria-labelledby="faq-title">
-        <FaqList />
       </Section>
       <Section aria-labelledby="cta-title">
         <CtaBanner />

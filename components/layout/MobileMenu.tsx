@@ -17,10 +17,12 @@ type MobileMenuProps = {
 
 /** Liens hors pôles, en liste sobre sous les cartes photo.
  * Doit rester aligné sur `primaryNav` (desktop) — cf. claude.md §7.4 :
- * la page zone d'intervention ne doit pas polluer la nav principale. */
+ * la page zone d'intervention ne doit pas polluer la nav principale.
+ * Méthode / FAQ ancrent les sections correspondantes de la home. */
 const secondaryLinks = [
-  { label: "Réalisations", href: "/realisations" },
-  { label: "À propos", href: "/a-propos" },
+  { label: "Méthode", href: "/#methode" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Notre histoire", href: "/a-propos" },
 ];
 
 /**

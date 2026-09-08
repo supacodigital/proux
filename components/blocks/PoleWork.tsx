@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-import { NavLink } from "@/components/ui/NavLink";
 import { projects, type ProjectPole } from "@/content/projects";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import styles from "./PoleWork.module.css";
@@ -49,11 +47,6 @@ export function PoleWork({
           </li>
         ))}
       </ul>
-
-      <NavLink href="/realisations" className={styles.more}>
-        Voir toutes nos réalisations
-        <ArrowRight size={18} aria-hidden />
-      </NavLink>
     </div>
   );
 }

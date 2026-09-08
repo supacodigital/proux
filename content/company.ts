@@ -67,8 +67,9 @@ export const company = {
 
   // — Réassurance (n’afficher que ce qui est vrai) —
   trust: {
-    // TODO(client) : compagnie + n° de contrat décennale
-    decennale: { label: "Assurance décennale", confirmed: false },
+    // Existence confirmée par le client le 2026-09-08.
+    // TODO(client) : compagnie + n° de contrat décennale (pour l'afficher en toutes lettres)
+    decennale: { label: "Assurance décennale", confirmed: true },
     freeQuote: { label: "Devis gratuit", confirmed: true },
     // TODO(client) : nombre de chantiers / années d’expérience communicables
     experience: { label: "Artisan local", confirmed: true },
@@ -120,8 +121,10 @@ export const primaryNav: NavItem[] = [
     href: "/toiture",
     panel: "prestations",
   },
-  { kind: "link", label: "Réalisations", href: "/realisations" },
-  { kind: "link", label: "À propos", href: "/a-propos" },
+  // Ancres vers les sections correspondantes de la home.
+  { kind: "link", label: "Méthode", href: "/#methode" },
+  { kind: "link", label: "FAQ", href: "/#faq" },
+  { kind: "link", label: "Notre histoire", href: "/a-propos" },
 ];
 
 /* Version à plat, pour le menu mobile (accordéons gérés côté composant). */
@@ -129,9 +132,10 @@ export const mobileNav: NavLink[] = [
   { label: "Toiture", href: "/toiture" },
   { label: "Nettoyage", href: "/nettoyage" },
   { label: "Peinture", href: "/peinture" },
-  { label: "Réalisations", href: "/realisations" },
+  { label: "Méthode", href: "/#methode" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Zone d’intervention", href: "/zone-intervention" },
-  { label: "À propos", href: "/a-propos" },
+  { label: "Notre histoire", href: "/a-propos" },
 ];
 
 export const footerNav: { title: string; links: NavLink[] }[] = [
@@ -148,8 +152,9 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
   {
     title: "L’entreprise",
     links: [
-      { label: "À propos", href: "/a-propos" },
-      { label: "Nos réalisations", href: "/realisations" },
+      { label: "Notre histoire", href: "/a-propos" },
+      { label: "Notre méthode", href: "/#methode" },
+      { label: "Questions fréquentes", href: "/#faq" },
       { label: "Zone d’intervention", href: "/zone-intervention" },
       { label: "Demander un devis", href: "/contact" },
     ],
@@ -191,7 +196,8 @@ export const trustBar: {
   icon: "shield" | "clock" | "map" | "home";
   pending?: boolean;
 }[] = [
-  { label: "Assurance décennale", icon: "shield", pending: true },
+  // Existence confirmée par le client le 2026-09-08 (n° de contrat : TODO).
+  { label: "Assurance décennale", icon: "shield" },
   { label: "Devis gratuit sous 48 h", icon: "clock" },
   { label: "Artisan local — Ain & Pays de Gex", icon: "map" },
   {

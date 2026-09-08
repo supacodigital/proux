@@ -71,35 +71,11 @@
   color: var(--color-ink-soft);
 }
 
-.more {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-weight: 600;
-  color: var(--color-accent);
-}
-
-.more svg {
-  transition: transform var(--dur-fast) var(--ease-out);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .more:hover svg {
-    transform: translateX(3px);
-  }
-}
-
 @media (min-width: 768px) {
   .caption {
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-6);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .more svg {
-    transition: none;
   }
 }

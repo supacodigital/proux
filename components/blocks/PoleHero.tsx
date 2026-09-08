@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { QuoteCta } from "@/components/ui/QuoteCta";
 import type { Pole } from "@/content/services";
@@ -33,10 +32,12 @@ export function PoleHero({ pole }: { pole: Pole }) {
 
         <div className={styles.actions}>
           <QuoteCta size="lg" onDark label="Demander un devis gratuit" />
-          <Link href="/realisations" className={styles.secondary}>
-            Voir nos réalisations
-            <ArrowRight size={18} aria-hidden />
-          </Link>
+          {pole.methodNote && (
+            <a href="#methode" className={styles.secondary}>
+              Voir notre méthode
+              <ArrowRight size={18} aria-hidden />
+            </a>
+          )}
         </div>
       </Container>
     </section>
