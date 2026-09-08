@@ -1,0 +1,98 @@
+/* AboutValues — valeurs de PROUX + bande photo. */
+
+.wrap {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.head {
+  max-width: 44rem;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  color: var(--color-navy);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.cardTitle {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.cardBody {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+}
+
+.wide {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  min-height: 14rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface-2);
+}
+
+.wideImg {
+  object-fit: cover;
+}
+
+@media (min-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1040px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+  }
+}
