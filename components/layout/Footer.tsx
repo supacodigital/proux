@@ -77,6 +77,16 @@ export function Footer() {
                 <NavLink href={link.href}>{link.label}</NavLink>
               </li>
             ))}
+            <li className={styles.credit}>
+              Site réalisé par{" "}
+              <a
+                href="https://supaco-digital.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                supacodigital
+              </a>
+            </li>
           </ul>
         </div>
       </Container>

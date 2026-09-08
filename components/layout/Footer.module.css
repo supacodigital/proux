@@ -176,9 +176,17 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-3) var(--space-6);
   padding-block: var(--space-8);
   font-size: var(--text-xs);
+}
+
+/* Tant que le container n'est pas centré avec des marges, réserver la
+   place du FAB WhatsApp (fixed, bas-droite) pour ne pas masquer le crédit. */
+@media (max-width: 1320px) {
+  .bottom {
+    padding-right: 4.5rem;
+  }
 }
 
 .copy {
@@ -188,7 +196,8 @@
 .legal {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5);
+  align-items: baseline;
+  gap: var(--space-3) var(--space-5);
 }
 
 .legal a {
@@ -196,8 +205,21 @@
   transition: color var(--dur-base) ease;
 }
 
+/* Crédit agence — dernier item de la ligne légale, discret. */
+.credit {
+  color: var(--color-ink-mute);
+}
+
+.credit a {
+  color: var(--color-on-dark-soft);
+  text-underline-offset: 2px;
+  text-decoration: underline;
+  transition: color var(--dur-base) ease;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .legal a:hover {
+  .legal a:hover,
+  .credit a:hover {
     color: #fff;
   }
 }
