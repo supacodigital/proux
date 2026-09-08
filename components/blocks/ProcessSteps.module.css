@@ -37,6 +37,18 @@
   color: var(--color-ink-soft);
 }
 
+/* Mobile : titre + sous-titre centrés */
+@media (max-width: 899px) {
+  .head {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .kicker {
+    justify-content: center;
+  }
+}
+
 /* — Étapes — */
 .steps {
   display: grid;

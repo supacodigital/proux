@@ -124,9 +124,7 @@ export function Testimonials() {
         </h2>
         <div className={styles.summary}>
           <span className={styles.rating}>
-            {company.reviews.rating.toLocaleString("fr-FR", {
-              minimumFractionDigits: 1,
-            })}
+            {company.reviews.rating.toLocaleString("fr-FR")}
           </span>
           <Stars rating={Math.round(company.reviews.rating)} />
           <span className={styles.summaryText}>

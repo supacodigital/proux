@@ -38,6 +38,18 @@
   color: var(--color-ink-soft);
 }
 
+/* Mobile : titre + sous-titre centrés */
+@media (max-width: 767px) {
+  .head {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .kicker {
+    justify-content: center;
+  }
+}
+
 /* — Liste des comparateurs — */
 .list {
   display: grid;

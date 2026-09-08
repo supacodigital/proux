@@ -54,7 +54,7 @@ export const stats: Stat[] = [
   {
     icon: "star",
     value: company.reviews.rating,
-    decimals: 1,
+    decimals: 0,
     suffix: " / 5",
     label: "note Google",
     hint: company.reviews.count

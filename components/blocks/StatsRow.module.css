@@ -31,6 +31,18 @@
   color: var(--color-navy);
 }
 
+/* Mobile : titre centré */
+@media (max-width: 767px) {
+  .head {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .kicker {
+    justify-content: center;
+  }
+}
+
 /* — Grille — */
 .grid {
   display: grid;

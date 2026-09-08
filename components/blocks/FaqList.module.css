@@ -38,6 +38,18 @@
   max-width: 52rem;
 }
 
+/* Mobile : titre centré */
+@media (max-width: 899px) {
+  .head {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .kicker {
+    justify-content: center;
+  }
+}
+
 @media (min-width: 900px) {
   .wrap {
     grid-template-columns: 1fr 1.4fr;

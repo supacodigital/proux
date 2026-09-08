@@ -38,9 +38,9 @@ export const company = {
     confirmed: true,
   },
   email: {
-    // TODO(client) : adresse e-mail réelle
-    display: "contact@proux.fr",
-    href: "mailto:contact@proux.fr",
+    // TODO(client) : adresse e-mail réelle (à créer sur le domaine proux-couverture.fr)
+    display: "contact@proux-couverture.fr",
+    href: "mailto:contact@proux-couverture.fr",
     confirmed: false,
   },
   whatsapp: {
@@ -84,9 +84,10 @@ export const company = {
   },
 
   // Avis Google (voir content/testimonials.ts pour le détail des avis).
+  // Note relevée sur la fiche Google le 2026-09-08 : 5/5 (tous les avis sont 5★).
   // TODO(client) : nombre d'avis exact affiché sur la fiche + URL de la fiche.
   reviews: {
-    rating: 4.9,
+    rating: 5,
     /** au moins ce nombre d'avis 5★ collectés (2026-09-07) — mettre le total réel */
     count: null as number | null,
     minCount: 15,
@@ -107,8 +108,8 @@ export const company = {
   },
 
   // — Domaine —
-  // TODO(client) : domaine cible définitif (cf. claude.md §13)
-  siteUrl: "https://www.proux.fr",
+  // Domaine acheté pour le projet le 2026-09-08.
+  siteUrl: "https://www.proux-couverture.fr",
   legacyUrl: "https://www.nettoyage-toiture-01.fr",
 } as const;
 

@@ -85,9 +85,10 @@ export const poles: Pole[] = [
     kicker: "Couverture & étanchéité",
     href: "/toiture",
     tagline: "Démoussage, hydrofuge et réparations de couverture.",
-    image: "/img/nav/toiture.jpg",
-    wideImage: "/img/services/toiture.jpg",
-    imageAlt: "Toiture en tuile après démoussage par PROUX",
+    // Header (méga-menu / menu mobile) : même visuel que la carte de la home.
+    image: "/img/services/toiture/hydrofuge.jpg",
+    wideImage: "/img/services/toiture/hydrofuge.jpg",
+    imageAlt: "Toiture en tuile après traitement hydrofuge par PROUX, teinte ravivée",
     highlights: [
       "Produits anti-mousse respectueux des tuiles",
       "Traitement hydrofuge de protection longue durée",
@@ -116,20 +117,6 @@ export const poles: Pole[] = [
 
     subs: [
       {
-        label: "Démoussage de toiture",
-        slug: "demoussage",
-        summary: "Brossage et traitement anti-mousse, sans haute pression destructrice.",
-        body: "Une toiture couverte de mousse et de lichen garde l’humidité, ce qui accélère l’usure des tuiles et peut provoquer des infiltrations. On décolle la mousse au brossage et à la basse pression, on récupère les déchets dans les gouttières, puis on applique un anti-mousse qui continue d’agir après notre passage. Votre toit retrouve sa couleur d’origine et respire de nouveau.",
-        points: [
-          "Adapté à la tuile terre cuite, la tuile béton et l’ardoise",
-          "Basse pression sur les couvertures anciennes ou fragiles",
-          "Abords protégés, gouttières et descentes vidées après intervention",
-        ],
-        image: "/img/services/toiture/demoussage.jpg",
-        imageAlt:
-          "Toiture en tuile avant / après démoussage par PROUX : mousse et lichen retirés",
-      },
-      {
         label: "Traitement hydrofuge",
         slug: "hydrofuge",
         summary: "Hydrofuge incolore ou coloré, protection longue durée contre l’eau.",
@@ -142,6 +129,20 @@ export const poles: Pole[] = [
         image: "/img/services/toiture/hydrofuge.jpg",
         imageAlt:
           "Toiture en tuile après traitement hydrofuge par PROUX, teinte ravivée",
+      },
+      {
+        label: "Démoussage de toiture",
+        slug: "demoussage",
+        summary: "Brossage et traitement anti-mousse, sans haute pression destructrice.",
+        body: "Une toiture couverte de mousse et de lichen garde l’humidité, ce qui accélère l’usure des tuiles et peut provoquer des infiltrations. On décolle la mousse au brossage et à la basse pression, on récupère les déchets dans les gouttières, puis on applique un anti-mousse qui continue d’agir après notre passage. Votre toit retrouve sa couleur d’origine et respire de nouveau.",
+        points: [
+          "Adapté à la tuile terre cuite, la tuile béton et l’ardoise",
+          "Basse pression sur les couvertures anciennes ou fragiles",
+          "Abords protégés, gouttières et descentes vidées après intervention",
+        ],
+        image: "/img/services/toiture/demoussage.jpg",
+        imageAlt:
+          "Toiture en tuile avant / après démoussage par PROUX : mousse et lichen retirés",
       },
       {
         label: "Nettoyage basse & haute pression",
@@ -200,7 +201,8 @@ export const poles: Pole[] = [
     kicker: "Façades & extérieurs",
     href: "/nettoyage",
     tagline: "Façades, terrasses, dallages et murets remis à neuf.",
-    image: "/img/nav/nettoyage.jpg",
+    // Header (méga-menu / menu mobile) : même visuel que la carte de la home.
+    image: "/img/services/nettoyage.jpg",
     wideImage: "/img/services/nettoyage.jpg",
     imageAlt: "Terrasse en dallage nettoyée par PROUX",
     highlights: [
@@ -305,8 +307,9 @@ export const poles: Pole[] = [
     kicker: "Peinture extérieure",
     href: "/peinture",
     tagline: "Peinture extérieure : façade, sous-face, boiseries.",
-    image: "/img/nav/peinture.jpg",
-    wideImage: "/img/services/peinture.jpg",
+    // Header (méga-menu / menu mobile) : même visuel que la carte de la home.
+    image: "/img/services/peintureexterieur.png",
+    wideImage: "/img/services/peintureexterieur.png",
     imageAlt: "Façade repeinte par PROUX",
     highlights: [
       "Préparation des supports avant mise en peinture",

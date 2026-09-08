@@ -33,6 +33,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "demoussage-toiture-pays-de-gex",
+    title: "Démoussage d'une grande toiture en tuile",
+    pole: "toiture",
+    location: "Pays de Gex",
+    detail: "Tuile terre cuite ternie par la mousse — teinte ravivée",
+    before: "/img/realisations/demoussage-toiture-pays-de-gex/avant.jpg",
+    after: "/img/realisations/demoussage-toiture-pays-de-gex/apres.jpg",
+    alt: "Toiture en tuile terre cuite d'une maison du Pays de Gex démoussée par PROUX",
+    featured: true,
+  },
+  {
     slug: "demoussage-toiture-tuile",
     title: "Démoussage d'une toiture en tuile",
     pole: "toiture",
@@ -41,17 +52,6 @@ export const projects: Project[] = [
     before: "/img/realisations/demoussage-toiture-tuile/avant.jpg",
     after: "/img/realisations/demoussage-toiture-tuile/apres.jpg",
     alt: "Toiture en tuile béton démoussée par PROUX",
-    featured: true,
-  },
-  {
-    slug: "ravalement-facade-maison",
-    title: "Nettoyage de façade et peinture des boiseries",
-    pole: "nettoyage",
-    location: "Bassin bellegardien",
-    detail: "Enduit terni, volets et avant-toit défraîchis",
-    before: "/img/realisations/ravalement-facade-maison/avant.jpg",
-    after: "/img/realisations/ravalement-facade-maison/apres.jpg",
-    alt: "Façade de maison nettoyée et boiseries repeintes par PROUX",
     featured: true,
   },
   {

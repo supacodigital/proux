@@ -5,7 +5,7 @@ import type { QuoteInput } from "./validation";
 
 const FROM =
   process.env.QUOTE_FROM_EMAIL ?? "PROUX — Site <onboarding@resend.dev>";
-const TO = process.env.QUOTE_TO_EMAIL ?? "contact@proux.fr";
+const TO = process.env.QUOTE_TO_EMAIL ?? "contact@proux-couverture.fr";
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)

@@ -52,6 +52,19 @@
   color: var(--color-ink-soft);
 }
 
+/* Mobile : titre + résumé note centrés */
+@media (max-width: 767px) {
+  .head {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .kicker,
+  .summary {
+    justify-content: center;
+  }
+}
+
 /* — Étoiles — */
 .stars {
   display: inline-flex;

@@ -47,7 +47,8 @@ devis clair) avant d'appeler.
 | Métier | Nettoyage / démoussage de toiture, traitement hydrofuge, nettoyage façades & extérieurs, peinture extérieure, petite réfection toiture | |
 | Zone | Département de l'Ain (01) + bassin franco-genevois / Pays de Gex / frontière suisse | Photos de chantiers : maisons type savoyard, vue sur montagnes → zone Gex / Bellegarde / Saint-Genis. |
 | Téléphone | `07 61 44 99 40` | Mobile confirmé par le client le 2026-09-07. Sert aussi de numéro WhatsApp. |
-| Email | _à obtenir_ | Placeholder `contact@proux.fr` en dev, `TODO` visible. |
+| Email | _à obtenir_ | Placeholder `contact@proux-couverture.fr` (domaine acheté) en dev, `TODO` visible tant que la boîte n'est pas créée. |
+| Nom de domaine | **`proux-couverture.fr`** | Acheté par le client le 2026-09-08. Site en prod sur `https://www.proux-couverture.fr`. Ancien domaine `nettoyage-toiture-01.fr` → à rediriger en 301 (à confirmer avec le client). |
 | Adresse | _à obtenir_ | Nécessaire pour le SEO local + fiche Google Business + mentions légales. |
 | SIRET | _à obtenir_ | Mentions légales. |
 | Assurance décennale | _à obtenir (assureur + n°)_ | **Argument de vente majeur** — à mettre en avant dès qu'on l'a. |
@@ -600,7 +601,7 @@ Photos iCloud de Clarky Proux 2/      ← ~25 fichiers (JPG, PNG, HEIC, MOV)
 - [ ] Périmètre géographique précis + liste des communes prioritaires.
 - [ ] Avis clients : accès à la fiche Google (URL), autorisation de citer les avis.
 - [ ] Fourchettes de prix communicables (ou non).
-- [ ] Nom de domaine cible : garder `nettoyage-toiture-01.fr`, prendre `proux-*.fr`, ou les deux (redirection 301) ?
+- [x] Nom de domaine cible : **`proux-couverture.fr`** acheté le 2026-09-08. Reste à trancher : redirection 301 de `nettoyage-toiture-01.fr` vers le nouveau domaine (recommandé pour conserver le SEO), et création de la boîte mail `contact@proux-couverture.fr`.
 - [ ] Le client veut-il éditer le contenu lui-même à terme (→ CMS headless) ?
 - [ ] Photos : autorisation d'usage, y a-t-il des chantiers à ne pas montrer ?
 - [ ] Logo vectoriel (SVG) disponible quelque part ?
