@@ -34,13 +34,20 @@
   object-position: 50% 50%;
 }
 
-/* Fallback statique quand la vidéo n'est pas chargée (mobile, data saver…) */
+/* Fallback statique quand la vidéo n'est pas chargée (mobile, data saver…).
+   WebP servi en priorité, JPG en repli — même image que l'attribut `poster`
+   de la <video>. */
 .poster {
   width: 100%;
   height: 100%;
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
+  background-image: url("/video/hero-poster.jpg");
+  background-image: image-set(
+    url("/video/hero-poster.webp") type("image/webp"),
+    url("/video/hero-poster.jpg") type("image/jpeg")
+  );
 }
 
 /* Assombrissement neutre léger + renforts haut/bas (header, CTA).

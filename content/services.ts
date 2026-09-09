@@ -365,9 +365,9 @@ export const poles: Pole[] = [
     href: "/peinture",
     tagline: "Peinture extérieure : façade, sous-face, boiseries.",
     // Header (méga-menu / menu mobile) + carte home : photo de chantier.
-    image: "/img/services/peintureexterieur.png",
-    wideImage: "/img/services/peintureexterieur.png",
-    imageAlt: "Façade repeinte par PROUX",
+    image: "/img/services/peinture-exterieur.jpg",
+    wideImage: "/img/services/peinture-exterieur.jpg",
+    imageAlt: "Façade avant / après mise en peinture par PROUX",
     // Page /peinture : schéma annoté fourni par le client (2026-09-09).
     schemaImage: "/img/services/peinture-cards.jpg",
     schemaImageAlt:
@@ -469,47 +469,3 @@ export function publishedSubs(pole: Pole): SubService[] {
   return pole.subs.filter((s) => s.confirmed !== false);
 }
 
-/* Panneau vedette du méga-menu Prestations — un chantier mis en avant.
-   TODO(client) : remplacer par un vrai chantier daté et localisé. */
-export const megaFeature = {
-  image: "/img/nav/vedette.jpg",
-  imageAlt:
-    "Nettoyeur haute pression sur une toiture en tuile, vue sur les montagnes",
-  kicker: "Chantier récent",
-  title: "Démoussage complet d'une toiture tuile",
-  location: "Pays de Gex",
-  href: "/realisations",
-  cta: "Voir toutes nos réalisations",
-};
-
-/* Zone d'intervention — aperçu pour le méga-menu.
-   TODO(client) : liste réelle des communes prioritaires (claude.md §13).
-   Placeholders réalistes (communes du Pays de Gex / Ain frontalier). */
-export type AreaGroup = { title: string; communes: string[] };
-
-export const areaPreview: AreaGroup[] = [
-  {
-    title: "Pays de Gex",
-    communes: [
-      "Gex",
-      "Ferney-Voltaire",
-      "Saint-Genis-Pouilly",
-      "Prévessin-Moëns",
-      "Divonne-les-Bains",
-      "Ornex",
-    ],
-  },
-  {
-    title: "Bassin bellegardien",
-    communes: [
-      "Bellegarde-sur-Valserine",
-      "Valserhône",
-      "Châtillon-en-Michaille",
-      "Injoux-Génissiat",
-    ],
-  },
-  {
-    title: "Côtière & Bugey",
-    communes: ["Nantua", "Oyonnax", "Montréal-la-Cluse", "Bourg-en-Bresse"],
-  },
-];

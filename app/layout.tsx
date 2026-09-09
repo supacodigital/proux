@@ -3,6 +3,8 @@ import { Inter, Inter_Tight } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { localBusinessSchema } from "@/components/seo/schema";
 import { company } from "@/content/company";
 import "@/styles/globals.css";
 
@@ -56,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} ${interTight.variable}`}>
       <body>
+        <JsonLd data={localBusinessSchema()} />
         <a href="#contenu" className="skip-link">
           Aller au contenu
         </a>

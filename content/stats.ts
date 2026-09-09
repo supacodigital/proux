@@ -7,13 +7,9 @@
    ============================================================= */
 
 import { company } from "./company";
-import { areaPreview } from "./services";
 
-/** Nombre de villes listées dans la zone d'intervention (source vérifiable) */
-const CITY_COUNT = areaPreview.reduce(
-  (n, group) => n + group.communes.length,
-  0,
-);
+/** Nombre de villes de la zone d'intervention (source : company.mainCities) */
+const CITY_COUNT = company.mainCities.length;
 
 export type Stat = {
   /** clé d'icône — voir STAT_ICONS dans StatsRow.tsx */

@@ -34,7 +34,6 @@ export default function ContactPage() {
             </li>
             <li>
               <Mail size={18} aria-hidden />
-              {/* TODO(client) : adresse e-mail réelle */}
               <a href={company.email.href}>{company.email.display}</a>
             </li>
             <li>

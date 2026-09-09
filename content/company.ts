@@ -25,9 +25,7 @@ export const company = {
   tagline:
     "Nettoyage de toiture, façades et peinture extérieure dans l’Ain et le Pays de Gex.",
 
-  // Accroche du hero (sous le logo).
-  // TODO(client) : confirmer « entreprise familiale / de père en fils » +
-  // le nombre d'années d'ancienneté (20 = valeur provisoire à valider).
+  // Accroche du hero (sous le logo). Confirmé par le client le 2026-09-09.
   heroPitch: "Entreprise familiale, de père en fils depuis plus de 20 ans.",
 
   // — Contact —
@@ -38,10 +36,13 @@ export const company = {
     confirmed: true,
   },
   email: {
-    // TODO(client) : adresse e-mail réelle (à créer sur le domaine proux-couverture.fr)
-    display: "contact@proux-couverture.fr",
-    href: "mailto:contact@proux-couverture.fr",
-    confirmed: false,
+    // Adresse de réception des demandes (fournie par le client le 2026-09-09).
+    // Sert aussi de destinataire Resend (QUOTE_TO_EMAIL). L'adresse d'envoi
+    // reste devis@proux-couverture.fr. TODO(client) : créer une boîte
+    // contact@proux-couverture.fr si le client veut une adresse au domaine.
+    display: "mproux.service@gmail.com",
+    href: "mailto:mproux.service@gmail.com",
+    confirmed: true,
   },
   whatsapp: {
     // Mobile fourni par le client le 2026-09-07 (format E.164).
@@ -64,6 +65,25 @@ export const company = {
   area: "Pays de Gex",
   areaLong:
     "Département de l’Ain et bassin franco-genevois : Pays de Gex, Bellegarde, Saint-Genis-Pouilly et alentours.",
+  // Communes principales — source unique pour le JSON-LD `areaServed` et le
+  // compteur « villes desservies » de la home. TODO(client) : liste réelle
+  // des communes prioritaires (claude.md §13) + créer les pages dédiées.
+  mainCities: [
+    "Gex",
+    "Ferney-Voltaire",
+    "Saint-Genis-Pouilly",
+    "Prévessin-Moëns",
+    "Divonne-les-Bains",
+    "Ornex",
+    "Bellegarde-sur-Valserine",
+    "Valserhône",
+    "Châtillon-en-Michaille",
+    "Nantua",
+    "Oyonnax",
+    "Montréal-la-Cluse",
+    "Bourg-en-Bresse",
+    "Injoux-Génissiat",
+  ] as string[],
 
   // — Réassurance (n’afficher que ce qui est vrai) —
   trust: {
@@ -71,12 +91,13 @@ export const company = {
     // TODO(client) : compagnie + n° de contrat décennale (pour l'afficher en toutes lettres)
     decennale: { label: "Assurance décennale", confirmed: true },
     freeQuote: { label: "Devis gratuit", confirmed: true },
-    // TODO(client) : nombre de chantiers / années d’expérience communicables
     experience: { label: "Artisan local", confirmed: true },
   },
 
-  // Chiffres-clés (section « Chiffres » de la home). Confirmés avec le client
-  // le 2026-09-07, sauf la note Google (voir `reviews`).
+  // Chiffres-clés (section « Chiffres » de la home).
+  // Ancienneté et nombre de chantiers confirmés par le client le 2026-09-09.
+  // La note Google reste `pending` tant que le nombre exact d'avis n'est
+  // pas communiqué (voir `reviews`).
   stats: {
     yearsExperience: 20,
     /** arrondi communicable — « + de 500 chantiers » */
@@ -128,18 +149,6 @@ export const primaryNav: NavItem[] = [
   { kind: "link", label: "Notre histoire", href: "/a-propos" },
 ];
 
-/* Version à plat, pour le menu mobile (accordéons gérés côté composant). */
-export const mobileNav: NavLink[] = [
-  { label: "Nettoyage toiture", href: "/toiture" },
-  { label: "Couverture & réparation", href: "/couverture" },
-  { label: "Nettoyage", href: "/nettoyage" },
-  { label: "Peinture", href: "/peinture" },
-  { label: "Méthode", href: "/#methode" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Zone d’intervention", href: "/zone-intervention" },
-  { label: "Notre histoire", href: "/a-propos" },
-];
-
 export const footerNav: { title: string; links: NavLink[] }[] = [
   {
     title: "Prestations",
@@ -159,31 +168,12 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
       { label: "Notre histoire", href: "/a-propos" },
       { label: "Notre méthode", href: "/#methode" },
       { label: "Questions fréquentes", href: "/#faq" },
-      { label: "Zone d’intervention", href: "/zone-intervention" },
       { label: "Demander un devis", href: "/contact" },
     ],
   },
-  {
-    title: "Zone d’intervention",
-    links: [
-      { label: "Gex", href: "/zone-intervention/gex" },
-      { label: "Ferney-Voltaire", href: "/zone-intervention/ferney-voltaire" },
-      {
-        label: "Saint-Genis-Pouilly",
-        href: "/zone-intervention/saint-genis-pouilly",
-      },
-      {
-        label: "Divonne-les-Bains",
-        href: "/zone-intervention/divonne-les-bains",
-      },
-      {
-        label: "Bellegarde-sur-Valserine",
-        href: "/zone-intervention/bellegarde-sur-valserine",
-      },
-      { label: "Toutes les communes", href: "/zone-intervention" },
-    ],
-  },
 ];
+// TODO : rétablir une colonne « Zone d’intervention » quand les pages
+// /zone-intervention + /zone-intervention/[commune] seront construites (brief §7.4).
 
 export const legalNav: NavLink[] = [
   { label: "Mentions légales", href: "/mentions-legales" },

@@ -76,7 +76,7 @@ export const mentionsLegales: LegalDocument = {
         `SIRET / RCS : ${TODO}`,
         `Numéro de TVA intracommunautaire : ${TODO}`,
         `Téléphone : 07 61 44 99 40`,
-        `E-mail : contact@proux-couverture.fr`,
+        `E-mail : mproux.service@gmail.com`,
         `Directeur de la publication : ${TODO}`,
       ],
     },
@@ -143,7 +143,7 @@ export const politiqueConfidentialite: LegalDocument = {
       heading: "Responsable du traitement",
       body: [
         `Le responsable du traitement est PROUX (coordonnées dans les mentions légales).`,
-        `Pour toute question relative à vos données : contact@proux-couverture.fr — téléphone 07 61 44 99 40.`,
+        `Pour toute question relative à vos données : mproux.service@gmail.com — téléphone 07 61 44 99 40.`,
       ],
     },
     {
@@ -192,7 +192,7 @@ export const politiqueConfidentialite: LegalDocument = {
       heading: "Vos droits",
       body: [
         `Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition au traitement de vos données, ainsi que du droit de retirer votre consentement à tout moment.`,
-        `Pour exercer ces droits, écrivez à contact@proux-couverture.fr. Une preuve d’identité pourra être demandée en cas de doute.`,
+        `Pour exercer ces droits, écrivez à mproux.service@gmail.com. Une preuve d’identité pourra être demandée en cas de doute.`,
         `Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez saisir la CNIL : www.cnil.fr — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07.`,
       ],
     },

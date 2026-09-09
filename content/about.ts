@@ -5,14 +5,14 @@
    ⚠️ claude.md §11 : aucune fausse donnée. Ce qui n'est pas confirmé
    par le client reste neutre + TODO.
 
-   Confirmé avec le client le 2026-09-08 :
+   Confirmé avec le client :
    - prénom de l'artisan : Yohan ;
    - entreprise familiale, transmise de père en fils ;
+   - plus de 20 ans d'activité (confirmé le 2026-09-09) ;
    - activité centrée sur le Pays de Gex ;
    - travaux couverts par une assurance décennale (compagnie + n° : TODO).
 
    TODO(client) :
-   - année de création / ancienneté exacte (le hero annonce « plus de 20 ans ») ;
    - nom de la compagnie d'assurance + n° de contrat décennale ;
    - adresse complète, SIRET (mentions légales) ;
    - éventuels labels / certifications réels (RGE, Qualibat, FFB/CAPEB…).

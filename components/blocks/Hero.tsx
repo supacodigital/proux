@@ -21,7 +21,6 @@ export function Hero() {
           Votre toiture retrouve son éclat d’origine.
         </h1>
 
-        {/* TODO(client) : confirmer « de père en fils » + le nombre d'années */}
         <p className={styles.pitch}>{company.heroPitch}</p>
 
         <div className={styles.actions}>

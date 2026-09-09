@@ -43,3 +43,5 @@ yarn-error.log*
 # PNG sources des schémas annotés des pages services (2-3 Mo chacun) —
 # seuls les JPG optimisés *-cards.jpg sont versionnés.
 /public/img/services/_sources/
+# Original haute résolution du poster du hero (le poster servi est optimisé).
+/public/video/_src/

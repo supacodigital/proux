@@ -230,7 +230,9 @@
 
 @media (min-width: 640px) {
   .columns {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* 2 colonnes (Prestations / L’entreprise) — repasser à repeat(3)
+       quand la colonne « Zone d’intervention » reviendra. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
