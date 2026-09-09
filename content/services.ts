@@ -42,7 +42,7 @@ export type MethodNote = {
 };
 
 export type Pole = {
-  key: "toiture" | "nettoyage" | "peinture";
+  key: "toiture" | "couverture" | "nettoyage" | "peinture";
   label: string;
   /** titre affiché sur la carte de la home (défaut : `label`) */
   homeTitle?: string;
@@ -52,9 +52,14 @@ export type Pole = {
   tagline: string;
   /** vignette carrée/portrait — méga-menu & menu mobile */
   image: string;
-  /** image paysage 16:10 — section « Nos prestations » de la home */
+  /** image paysage 16:10 — carte du pôle dans la section « Nos prestations » de la home */
   wideImage: string;
+  /** alt commun de `image` et `wideImage` (photos de chantier) */
   imageAlt: string;
+  /** schéma annoté 3:2 (illustration + bulles) affiché sur la page pôle,
+   *  entre l'intro et les sous-prestations. Fourni par le client le 2026-09-09. */
+  schemaImage: string;
+  schemaImageAlt: string;
   /** 2 points de réassurance courts, affichés dans le méga-menu */
   highlights: string[];
 
@@ -80,31 +85,35 @@ export type Pole = {
 export const poles: Pole[] = [
   {
     key: "toiture",
-    label: "Toiture",
+    label: "Nettoyage toiture",
     homeTitle: "Nettoyage toiture",
-    kicker: "Couverture & étanchéité",
+    kicker: "Démoussage & hydrofuge",
     href: "/toiture",
-    tagline: "Démoussage, hydrofuge et réparations de couverture.",
-    // Header (méga-menu / menu mobile) : même visuel que la carte de la home.
+    tagline: "Démoussage, nettoyage et traitement hydrofuge de la couverture.",
+    // Header (méga-menu / menu mobile) + carte home : photo de chantier.
     image: "/img/services/toiture/hydrofuge.jpg",
     wideImage: "/img/services/toiture/hydrofuge.jpg",
     imageAlt: "Toiture en tuile après traitement hydrofuge par PROUX, teinte ravivée",
+    // Page /toiture : schéma annoté fourni par le client (2026-09-09).
+    schemaImage: "/img/services/toiture-cards.jpg",
+    schemaImageAlt:
+      "Schéma d’une toiture en tuile : démoussage des mousses et lichens, nettoyage basse ou haute pression selon la couverture, traitement hydrofuge de protection",
     highlights: [
       "Produits anti-mousse respectueux des tuiles",
       "Traitement hydrofuge de protection longue durée",
     ],
 
-    pageTitle: "Nettoyage et entretien de toiture",
+    pageTitle: "Nettoyage et démoussage de toiture",
     pagePitch:
       "On enlève la mousse, on protège la couverture, votre toit repart pour des années.",
     heroImage: "/img/services/toiture/hero.jpg",
     heroImageAlt:
       "Artisan PROUX nettoyant une toiture en tuile au nettoyeur haute pression, vue sur les montagnes du Pays de Gex",
     intro:
-      "La mousse et le lichen retiennent l’eau, soulèvent les tuiles et finissent par fragiliser toute la couverture. PROUX intervient sur les toitures en tuile terre cuite, tuile béton et ardoise dans l’Ain et le Pays de Gex : démoussage, traitement de protection et petites réparations, sans monter la pression au point d’abîmer vos tuiles.",
+      "La mousse et le lichen retiennent l’eau, s’infiltrent sous les tuiles et accélèrent l’usure de toute la couverture. PROUX nettoie et protège les toitures en tuile terre cuite, tuile béton et ardoise dans l’Ain et le Pays de Gex : démoussage, nettoyage basse ou haute pression selon le support et traitement hydrofuge, sans jamais monter la pression au point d’abîmer vos tuiles. Pour la réparation de la couverture elle-même — faîtage, tuiles cassées, solins, souche de cheminée — voir la page Couverture & réparation.",
     metaTitle: "Nettoyage de toiture, démoussage & hydrofuge",
     metaDescription:
-      "PROUX nettoie et protège votre toiture dans l’Ain et le Pays de Gex : démoussage, traitement hydrofuge, faîtage, solins, remplacement de tuiles. Devis gratuit sous 48 h.",
+      "PROUX nettoie et protège votre toiture dans l’Ain et le Pays de Gex : démoussage, nettoyage basse/haute pression, traitement hydrofuge, nettoyage de gouttières. Devis gratuit sous 48 h.",
     methodNote: {
       title: "Notre traitement en trois temps",
       body: "Un démoussage qui tient dans la durée ne se limite pas à un passage de brosse. On travaille toujours dans le même ordre.",
@@ -154,6 +163,58 @@ export const poles: Pole[] = [
           "Artisan PROUX nettoyant une toiture en tuile au nettoyeur haute pression",
       },
       {
+        label: "Nettoyage de gouttières",
+        slug: "gouttieres",
+        summary: "Retrait des feuilles et de la mousse, vérification de l’écoulement.",
+        body: "Des gouttières bouchées débordent, ruissellent le long de la façade et gèlent en hiver. On retire les feuilles, la mousse et les dépôts des gouttières et des descentes, on contrôle les pentes et les jonctions, et on s’assure que l’eau part bien là où elle doit partir. C’est souvent l’occasion de repérer un crochet desserré ou une descente fendue.",
+        image: "/img/services/toiture/gouttieres.jpg",
+        imageAlt: "Toiture en tuile et sa gouttière entretenues par PROUX",
+      },
+    ],
+  },
+  {
+    key: "couverture",
+    label: "Couverture & réparation",
+    homeTitle: "Couverture & réparation",
+    kicker: "Réparation & étanchéité",
+    href: "/couverture",
+    tagline: "Faîtage, tuiles, solins, souche de cheminée : les points qui laissent passer l’eau.",
+    // Header (méga-menu / menu mobile) + carte home : photo de chantier.
+    image: "/img/services/toiture/solins.jpg",
+    wideImage: "/img/services/toiture/solins.jpg",
+    imageAlt: "Solin en zinc neuf posé au pied d’une souche de cheminée par PROUX",
+    // Page /couverture : schéma annoté fourni par le client (2026-09-09).
+    schemaImage: "/img/services/couverture-cards.jpg",
+    schemaImageAlt:
+      "Schéma d’une toiture : les points de réparation d’une couverture — faîtage, tuiles cassées ou déplacées, solins et souche de cheminée",
+    highlights: [
+      "Réfection de faîtage à sec ou scellé",
+      "Reprise des solins et de la souche de cheminée",
+    ],
+
+    pageTitle: "Couverture & réparation de toiture",
+    pagePitch:
+      "On reprend les points sensibles de la couverture pour que l’eau reste dehors.",
+    heroImage: "/img/services/toiture/faitage.jpg",
+    heroImageAlt:
+      "Faîtage d’une toiture en tuile en cours de réfection par PROUX",
+    intro:
+      "Une toiture propre reste vulnérable là où les éléments se raccordent : faîtage descellé, tuiles cassées ou glissées, solins qui se soulèvent autour de la cheminée, souche fissurée. Ces points laissent l’eau atteindre la charpente. PROUX intervient sur ces réparations ponctuelles de couverture dans l’Ain et le Pays de Gex, en complément du démoussage ou lors d’une visite dédiée. Pour une réfection complète de couverture ou de charpente, on vous oriente vers un couvreur spécialisé.",
+    metaTitle: "Réparation de toiture : faîtage, tuiles, solins & cheminée",
+    metaDescription:
+      "PROUX répare les points sensibles de votre toiture dans l’Ain et le Pays de Gex : réfection de faîtage, remplacement de tuiles, solins et abergements, souche de cheminée. Devis gratuit sous 48 h.",
+    methodNote: {
+      title: "On traite d’abord ce qui laisse passer l’eau",
+      body: "Sur une réparation de couverture, l’ordre compte : on sécurise les entrées d’eau avant tout traitement de surface.",
+      points: [
+        "Repérage : faîtage, tuiles, solins, souche — on liste les points qui fuient et on les prend par ordre de priorité.",
+        "Reprise : dépose des éléments abîmés, remplacement par des matériaux compatibles, pose au mortier ou à sec selon la couverture.",
+        "Contrôle : vérification des raccords et de l’écoulement avant de rendre le chantier.",
+      ],
+    },
+
+    subs: [
+      {
         label: "Réfection de faîtage",
         slug: "faitage",
         summary: "Faîtage à sec ou scellé, remplacement des tuiles faîtières.",
@@ -185,14 +246,6 @@ export const poles: Pole[] = [
         image: "/img/services/toiture/cheminee.jpg",
         imageAlt: "Souche de cheminée avant / après remise en état par PROUX",
       },
-      {
-        label: "Nettoyage de gouttières",
-        slug: "gouttieres",
-        summary: "Retrait des feuilles et de la mousse, vérification de l’écoulement.",
-        body: "Des gouttières bouchées débordent, ruissellent le long de la façade et gèlent en hiver. On retire les feuilles, la mousse et les dépôts des gouttières et des descentes, on contrôle les pentes et les jonctions, et on s’assure que l’eau part bien là où elle doit partir. C’est souvent l’occasion de repérer un crochet desserré ou une descente fendue.",
-        image: "/img/services/toiture/gouttieres.jpg",
-        imageAlt: "Toiture en tuile et sa gouttière entretenues par PROUX",
-      },
     ],
   },
   {
@@ -201,10 +254,14 @@ export const poles: Pole[] = [
     kicker: "Façades & extérieurs",
     href: "/nettoyage",
     tagline: "Façades, terrasses, dallages et murets remis à neuf.",
-    // Header (méga-menu / menu mobile) : même visuel que la carte de la home.
+    // Header (méga-menu / menu mobile) + carte home : photo de chantier.
     image: "/img/services/nettoyage.jpg",
     wideImage: "/img/services/nettoyage.jpg",
     imageAlt: "Terrasse en dallage nettoyée par PROUX",
+    // Page /nettoyage : schéma annoté fourni par le client (2026-09-09).
+    schemaImage: "/img/services/nettoyage-cards.jpg",
+    schemaImageAlt:
+      "Schéma d’une maison avec terrasse : nettoyage des façades, détartrage des dallages et terrasses, remise à neuf des murets",
     highlights: [
       "Pression adaptée à chaque support",
       "Anti-mousse et traitement des taches vertes",
@@ -307,10 +364,14 @@ export const poles: Pole[] = [
     kicker: "Peinture extérieure",
     href: "/peinture",
     tagline: "Peinture extérieure : façade, sous-face, boiseries.",
-    // Header (méga-menu / menu mobile) : même visuel que la carte de la home.
+    // Header (méga-menu / menu mobile) + carte home : photo de chantier.
     image: "/img/services/peintureexterieur.png",
     wideImage: "/img/services/peintureexterieur.png",
     imageAlt: "Façade repeinte par PROUX",
+    // Page /peinture : schéma annoté fourni par le client (2026-09-09).
+    schemaImage: "/img/services/peinture-cards.jpg",
+    schemaImageAlt:
+      "Schéma d’une maison repeinte : peinture de façade, mise en peinture des sous-faces de toit et des boiseries extérieures",
     highlights: [
       "Préparation des supports avant mise en peinture",
       "Produits façade et bois adaptés à l’extérieur",

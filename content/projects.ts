@@ -12,7 +12,14 @@
    - localité exacte de chaque chantier (ici : secteur approximatif).
    ============================================================= */
 
-export type ProjectPole = "toiture" | "nettoyage" | "peinture";
+export type ProjectPole =
+  | "toiture"
+  | "couverture"
+  | "nettoyage"
+  | "peinture";
+// TODO(assets) : aucun chantier « couverture » (faîtage / solins / souche)
+// n'est encore trié. La section « Avant / Après » de /couverture reste masquée
+// tant qu'aucun projet n'a `pole: "couverture"` (cf. PoleWork).
 
 export type Project = {
   slug: string;

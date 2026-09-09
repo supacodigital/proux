@@ -130,7 +130,8 @@ export const primaryNav: NavItem[] = [
 
 /* Version à plat, pour le menu mobile (accordéons gérés côté composant). */
 export const mobileNav: NavLink[] = [
-  { label: "Toiture", href: "/toiture" },
+  { label: "Nettoyage toiture", href: "/toiture" },
+  { label: "Couverture & réparation", href: "/couverture" },
   { label: "Nettoyage", href: "/nettoyage" },
   { label: "Peinture", href: "/peinture" },
   { label: "Méthode", href: "/#methode" },
@@ -145,6 +146,8 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "Démoussage de toiture", href: "/toiture#demoussage" },
       { label: "Traitement hydrofuge", href: "/toiture#hydrofuge" },
+      { label: "Réfection de faîtage", href: "/couverture#faitage" },
+      { label: "Solins & souche de cheminée", href: "/couverture#solins" },
       { label: "Nettoyage de façade", href: "/nettoyage#facade" },
       { label: "Nettoyage de terrasse & dallage", href: "/nettoyage#terrasse" },
       { label: "Peinture extérieure", href: "/peinture" },

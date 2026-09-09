@@ -14,6 +14,7 @@ const BUILT_ROUTES = new Set<string>([
   "/",
   "/contact",
   "/toiture",
+  "/couverture",
   "/nettoyage",
   "/peinture",
   "/a-propos",

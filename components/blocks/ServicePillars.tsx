@@ -3,7 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Droplets, House, PaintRoller, type LucideIcon } from "lucide-react";
+import {
+  Droplets,
+  House,
+  PaintRoller,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import { poles } from "@/content/services";
 import { useInView } from "@/lib/useInView";
 import { QuoteCta } from "@/components/ui/QuoteCta";
@@ -11,6 +17,7 @@ import styles from "./ServicePillars.module.css";
 
 const POLE_ICONS: Record<(typeof poles)[number]["key"], LucideIcon> = {
   toiture: House,
+  couverture: Wrench,
   nettoyage: Droplets,
   peinture: PaintRoller,
 };
@@ -69,8 +76,9 @@ export function ServicePillars() {
           Toiture, façades, peinture — un seul artisan
         </h2>
         <p className={styles.intro}>
-          PROUX entretient et protège l’extérieur de votre maison, du démoussage
-          de la toiture à la mise en peinture des boiseries.
+          PROUX entretient, répare et protège l’extérieur de votre maison : du
+          démoussage de la toiture à la mise en peinture des boiseries, en
+          passant par les réparations de couverture.
         </p>
       </div>
 
@@ -82,7 +90,7 @@ export function ServicePillars() {
         className={styles.grid}
         data-inview={inView ? "" : undefined}
         role="region"
-        aria-label="Nos 3 pôles de prestations"
+        aria-label="Nos pôles de prestations"
         tabIndex={isSlider ? 0 : undefined}
       >
         {poles.map((pole, i) => {
@@ -102,7 +110,7 @@ export function ServicePillars() {
                   src={pole.wideImage}
                   alt={pole.imageAlt}
                   fill
-                  sizes="(max-width: 900px) 100vw, 33vw"
+                  sizes="(max-width: 900px) 100vw, 50vw"
                   className={styles.mediaImg}
                 />
                 <span className={styles.mediaIcon} aria-hidden>

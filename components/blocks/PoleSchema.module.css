@@ -1,0 +1,22 @@
+/* PoleSchema — schéma annoté d'une page pôle (illustration + bulles).
+   Rendu dans la même Section que PoleIntro, sous le sommaire. */
+
+.figure {
+  max-width: 920px;
+  margin-block-start: var(--space-16);
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .figure {
+    margin-block-start: var(--space-12);
+  }
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  /* fond du schéma (crème très clair) — évite un flash sombre au chargement */
+  background: var(--color-surface);
+}

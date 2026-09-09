@@ -53,7 +53,7 @@ export const faq: FaqItem[] = [
    ============================================================= */
 
 export const faqByPole: Record<
-  "toiture" | "nettoyage" | "peinture",
+  "toiture" | "couverture" | "nettoyage" | "peinture",
   FaqItem[]
 > = {
   toiture: [
@@ -73,14 +73,36 @@ export const faqByPole: Record<
         "Il ravive la teinte d’origine plutôt qu’il ne la transforme : une tuile rouge délavée retrouve un rouge profond. On vous montre des exemples et on peut appliquer le produit sur une zone témoin avant de traiter toute la toiture.",
     },
     {
-      question: "Intervenez-vous sur les petites réparations, pas seulement le nettoyage ?",
-      answer:
-        "Oui. Remplacement de tuiles cassées, réfection de faîtage, reprise des solins autour de la cheminée, rejointoiement de souche : on traite les points qui laissent passer l’eau. Pour une réfection lourde de charpente ou de couverture complète, on vous oriente vers un couvreur spécialisé.",
-    },
-    {
       question: "Combien de temps dure la protection hydrofuge ?",
       answer:
         "Plusieurs années, selon l’exposition de votre toit (orientation, arbres à proximité, altitude) et le produit appliqué. On refait le point avec vous à la fin du chantier et on reste joignables ensuite.",
+    },
+    {
+      question: "Faut-il aussi réparer la toiture, ou seulement la nettoyer ?",
+      answer:
+        "Ça dépend de l’état de la couverture. Le nettoyage et le traitement suffisent sur une toiture saine. Si des tuiles sont cassées, le faîtage descellé ou les solins abîmés, il faut d’abord reprendre ces points — c’est l’objet de notre page Couverture & réparation. On repère ces défauts pendant le démoussage et on vous le signale.",
+    },
+  ],
+  couverture: [
+    {
+      question: "Faites-vous des toitures complètes ou seulement des réparations ?",
+      answer:
+        "On intervient sur les réparations ponctuelles : faîtage, tuiles cassées ou glissées, solins et abergements autour de la cheminée, rejointoiement de souche. Pour une réfection complète de couverture ou une reprise de charpente, on vous oriente vers un couvreur spécialisé — c’est un autre métier.",
+    },
+    {
+      question: "Comment savoir d’où vient l’infiltration ?",
+      answer:
+        "L’eau qui apparaît à l’intérieur entre rarement juste au-dessus de la tache. On monte sur la toiture, on inspecte les points sensibles — faîtage, arêtiers, solins, tuiles autour des pénétrations — et on remonte à la source. Le devis liste ce qu’on a trouvé et ce qu’on propose de reprendre.",
+    },
+    {
+      question: "Peut-on regrouper la réparation et le démoussage sur le même chantier ?",
+      answer:
+        "Oui, et c’est souvent le plus logique : on est déjà sur la toiture. On reprend d’abord les points qui laissent passer l’eau, puis on enchaîne sur le démoussage et le traitement. Un seul déplacement, un seul devis.",
+    },
+    {
+      question: "Le faîtage à sec ou scellé au mortier, lequel choisir ?",
+      answer:
+        "La pose à sec ventilée est aujourd’hui la référence : elle laisse la toiture respirer et se reprend facilement. Le scellé au mortier reste adapté à certaines couvertures anciennes. On regarde l’existant et la pente, et on vous conseille selon votre toit.",
     },
   ],
   nettoyage: [

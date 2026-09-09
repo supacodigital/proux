@@ -248,11 +248,13 @@
 }
 
 /* — Responsive — */
+/* 4 pôles : grille 2×2 dès 900px. La carte riche (titre + tagline +
+   5 sous-liens + CTA) garde de l'air ; 4 colonnes à 1200px serrent trop. */
 @media (min-width: 900px) {
   .grid {
     display: grid;
     grid-auto-flow: unset;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-6);
     overflow-x: visible;
     scroll-snap-type: none;

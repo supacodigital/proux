@@ -6,6 +6,7 @@ import { faqByPole } from "@/content/faq";
 import { projects } from "@/content/projects";
 import { PoleHero } from "./PoleHero";
 import { PoleIntro } from "./PoleIntro";
+import { PoleSchema } from "./PoleSchema";
 import { ServiceSection } from "./ServiceSection";
 import { MethodNote } from "./MethodNote";
 import { PoleWork } from "./PoleWork";
@@ -44,6 +45,7 @@ export function PolePage({ poleKey }: { poleKey: Pole["key"] }) {
 
       <Section aria-label={`${pole.label} — présentation`}>
         <PoleIntro pole={pole} subs={subs} />
+        {pole.schemaImage && <PoleSchema pole={pole} />}
       </Section>
 
       <Section
