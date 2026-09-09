@@ -1,2 +1,3 @@
+packages: []
 allowBuilds:
-  unrs-resolver: false
+  unrs-resolver: true
