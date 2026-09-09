@@ -1,11 +1,20 @@
 import { Resend } from "resend";
 import type { QuoteInput } from "./validation";
 
-/* Ce module ne doit être importé que côté serveur (Server Actions). */
+/* Ce module ne doit être importé que côté serveur (Server Actions).
+
+   Envoi des demandes de devis via Resend (https://resend.com).
+   L'expéditeur DOIT être une adresse d'un domaine vérifié dans Resend
+   (proux-couverture.fr). Le destinataire peut être n'importe quelle
+   adresse (ici la boîte Gmail de l'artisan).
+
+   Tant que RESEND_API_KEY est absente → mode « dry-run » : la demande
+   est validée et loggée, rien n'est envoyé. */
 
 const FROM =
-  process.env.QUOTE_FROM_EMAIL ?? "PROUX — Site <onboarding@resend.dev>";
-const TO = process.env.QUOTE_TO_EMAIL ?? "contact@proux-couverture.fr";
+  process.env.QUOTE_FROM_EMAIL ??
+  "PROUX — Site <devis@proux-couverture.fr>";
+const TO = process.env.QUOTE_TO_EMAIL ?? "mproux.service@gmail.com";
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)

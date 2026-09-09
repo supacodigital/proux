@@ -289,7 +289,7 @@ affiche directement la valeur finale.
 | Images | `next/image`, AVIF/WebP, dossier `public/img/…` optimisé (voir §9). |
 | Icônes | `lucide-react`. |
 | Animation | CSS transitions + `IntersectionObserver` maison. Pas de lib d'animation pour la v1. `motion`/Framer seulement si un composant (slider avant/après avec inertie) le justifie vraiment. |
-| Formulaire | Server Action Next.js + envoi email (Resend ou nodemailer via SMTP OVH/Hostinger) + honeypot anti-spam. Pas de dépendance form lourde ; validation avec `zod`. |
+| Formulaire | Server Action Next.js + honeypot anti-spam + validation `zod`. Envoi via **Resend** (`resend` npm) : notification interne vers la boîte de l'artisan + accusé de réception au prospect. Expéditeur = adresse du domaine `proux-couverture.fr` vérifié dans Resend. Fallback dry-run si `RESEND_API_KEY` absente. (Web3Forms écarté : le plan gratuit refuse les envois côté serveur.) |
 | Contenu | Données structurées en fichiers **`content/*.ts`** typés (services, communes, chantiers, FAQ, avis). Pas de CMS pour la v1. Prévoir la migration vers un CMS headless plus tard si le client veut éditer seul. |
 | Analytics | Plausible ou Vercel Analytics (léger, sans bandeau cookie lourd si possible). |
 | Hébergement | Vercel, ou Hostinger (le client a un accès Hostinger). Build statique/ISR au maximum. |
