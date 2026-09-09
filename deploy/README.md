@@ -3,75 +3,86 @@
 Site **Next.js 15** servi en mode « complet » (Server Actions du formulaire de
 devis via Resend, `next/image`, en-têtes de sécurité de `next.config.ts`).
 
-- **VPS** : Ubuntu 24.04, `145.223.34.3` (`srv1193148`)
-- **Runtime** : Node 20 + PM2, process `proux` sur le port **3100**
-- **Reverse-proxy** : Nginx → `127.0.0.1:3100`
+- **En prod** : https://www.proux-couverture.fr — déployé le 2026-09-09
+- **VPS** : Ubuntu 24.04, `145.223.34.3` (`srv1193148`), accès SSH `root`
+- **Runtime** : Node 20 + **pnpm 9** + PM2, process `proux` sur le port **3100**
+- **Reverse-proxy** : Nginx → `127.0.0.1:3100`, HTTPS Let's Encrypt (renouv. auto)
 - **Répertoire** : `/var/www/proux-couverture.fr`
 - **Repo** : `https://github.com/supacodigital/proux` (branche `main`)
 
 Même modèle que les autres sites Node du VPS (`sabai`, `kekosan`, `gex`).
 
+> **pnpm 9, pas 11.** Le VPS tourne Node 20 ; pnpm 10/11 exigent Node ≥ 22.13.
+> Le repo n'a **pas** de champ `packageManager` (il forçait pnpm 11 → crash).
+> pnpm 9 est installé en global via `npm i -g pnpm@9`. `corepack` est désactivé
+> sur le VPS (il re-téléchargeait pnpm 11). Le réglage `unrs-resolver` (build
+> autorisé) est porté par `package.json` › `pnpm.onlyBuiltDependencies` pour
+> pnpm 9 **et** `pnpm-workspace.yaml` › `allowBuilds` pour le poste de dev (pnpm 11).
+
 ---
 
-## 1. Setup initial (une seule fois)
+## 1. Setup initial — DÉJÀ FAIT (2026-09-09)
 
-Sur le VPS, en `root` :
+Pour référence / reconstruction. Sur le VPS, en `root` :
 
 ```bash
+# ─ pnpm 9 (une fois pour le VPS entier) ─
+corepack disable
+npm install -g pnpm@9
+
 # ─ Cloner le repo ─
 cd /var/www
 git clone https://github.com/supacodigital/proux.git proux-couverture.fr
 cd proux-couverture.fr
 
 # ─ Variables d'environnement (NON versionnées) ─
-cp .env.example .env.local
-nano .env.local
-#   RESEND_API_KEY=re_...              (clé Resend, cf. .env.local du poste de dev)
-#   QUOTE_FROM_EMAIL="PROUX — Site <devis@proux-couverture.fr>"
-#   QUOTE_TO_EMAIL=mproux.service@gmail.com
+cat > .env.local <<'EOF'
+RESEND_API_KEY=re_...            # cf. .env.local du poste de dev
+QUOTE_FROM_EMAIL="PROUX — Site <devis@proux-couverture.fr>"
+QUOTE_TO_EMAIL=mproux.service@gmail.com
+EOF
 
 # ─ Dépendances + build ─
-corepack enable            # active pnpm à la version du packageManager
 pnpm install --frozen-lockfile
 pnpm build
 
 # ─ Démarrer sous PM2 ─
 pm2 start ecosystem.config.js
-pm2 save                   # persiste la liste des process (redémarre au boot)
+pm2 save                   # persiste la liste (survit au reboot via pm2-root.service)
 
-# ─ Vérifier que ça répond en local ─
-curl -sI http://127.0.0.1:3100 | head -5
+curl -sI http://127.0.0.1:3100 | head -5   # doit répondre 200
 ```
 
-## 2. Nginx + HTTPS
+## 2. Nginx + HTTPS — DÉJÀ FAIT
 
 ```bash
 cp /var/www/proux-couverture.fr/deploy/nginx-proux-couverture.fr.conf \
    /etc/nginx/sites-available/proux-couverture.fr
-
 ln -s /etc/nginx/sites-available/proux-couverture.fr /etc/nginx/sites-enabled/
 nginx -t && systemctl reload nginx
 
-# Certificat Let's Encrypt (le DNS doit déjà pointer vers le VPS — cf. §3)
-certbot --nginx -d proux-couverture.fr -d www.proux-couverture.fr
+# Certbot (le DNS doit déjà pointer vers le VPS)
+certbot --nginx -d proux-couverture.fr -d www.proux-couverture.fr \
+        --non-interactive --agree-tos -m supaco.digital@gmail.com --redirect
 ```
 
-Le canonique est **www** (`content/company.ts` → `siteUrl`). Le fichier `.conf`
-redirige déjà l'apex → www ; vérifier après Certbot que ce bloc n'a pas été cassé.
+Canonique = **www** (`content/company.ts` › `siteUrl`). Redirections en place :
+`http://*` → HTTPS, `https://proux-couverture.fr` → `https://www.proux-couverture.fr`.
 
-## 3. DNS
+## 3. DNS — DÉJÀ FAIT
 
-Le domaine est géré chez Hostinger. Enregistrement à corriger :
+Géré chez Hostinger (zone DNS). État actuel :
 
-| Type | Nom | Avant | Après |
-| ---- | --- | ----- | ----- |
-| A    | `@` | `2.57.91.91` | `145.223.34.3` |
-| CNAME| `www` | `proux-couverture.fr.` | (inchangé) |
+| Type | Nom | Valeur | TTL |
+| ---- | --- | ------ | --- |
+| A    | `@` | `145.223.34.3` (le VPS) | 300 |
+| CNAME| `www` | `proux-couverture.fr.` | 300 |
 
-Les enregistrements Resend (SPF / DKIM `resend._domainkey` / `_dmarc` / `send`)
-restent tels quels — l'envoi d'e-mail en dépend.
+Enregistrements Resend (SPF / DKIM `resend._domainkey` / `_dmarc` / `send`) :
+**ne pas toucher**, l'envoi d'e-mail du formulaire en dépend.
 
-TTL de l'enregistrement A : 50 s → propagation quasi immédiate.
+> Ancien domaine `nettoyage-toiture-01.fr` → 301 vers le nouveau : **à faire**
+> (côté client / registrar de l'ancien domaine).
 
 ## 4. Redéploiements
 
@@ -94,7 +105,21 @@ pm2 restart proux           # redémarrage sec
 tail -f /var/log/nginx/proux-error.log
 ```
 
+Redémarrage au boot : `pm2-root.service` (systemd, déjà `enabled`) relit
+`/root/.pm2/dump.pm2`. Après tout changement de la liste des process : `pm2 save`.
+
 ### Mise à jour d'un secret
 
 Éditer `/var/www/proux-couverture.fr/.env.local` puis
 `pm2 restart proux --update-env`.
+
+## 6. Reste à faire
+
+- [ ] 301 de `nettoyage-toiture-01.fr` → `https://www.proux-couverture.fr`
+      (côté ancien domaine — voir avec le client / son registrar).
+- [ ] Boîte `contact@proux-couverture.fr` (le formulaire envoie déjà depuis
+      `devis@…`, vérifié dans Resend).
+- [ ] `next start` est lancé via `pnpm start` (fork). Acceptable ; si un jour on
+      veut que PM2 surveille directement le process Next :
+      `script: "node_modules/next/dist/bin/next", args: "start"` dans
+      `ecosystem.config.js` (chemin réel du bin après `pnpm install`).
