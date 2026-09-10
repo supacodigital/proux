@@ -71,7 +71,9 @@ export type Pole = {
   /** image plein cadre du hero de section */
   heroImage: string;
   heroImageAlt: string;
-  /** intro courte : à qui ça s'adresse, pourquoi c'est important */
+  /** phrase d'attaque du chapô — affichée en gros, sur la page pôle */
+  introLead: string;
+  /** suite du chapô : à qui ça s'adresse, pourquoi c'est important */
   intro: string;
   /** <title> + meta description SEO */
   metaTitle: string;
@@ -109,8 +111,10 @@ export const poles: Pole[] = [
     heroImage: "/img/services/toiture/hero.jpg",
     heroImageAlt:
       "Artisan PROUX nettoyant une toiture en tuile au nettoyeur haute pression, vue sur les montagnes du Pays de Gex",
+    introLead:
+      "La mousse et le lichen retiennent l’eau, s’infiltrent sous les tuiles et accélèrent l’usure de toute la couverture.",
     intro:
-      "La mousse et le lichen retiennent l’eau, s’infiltrent sous les tuiles et accélèrent l’usure de toute la couverture. PROUX nettoie et protège les toitures en tuile terre cuite, tuile béton et ardoise dans l’Ain et le Pays de Gex : démoussage, nettoyage basse ou haute pression selon le support et traitement hydrofuge, sans jamais monter la pression au point d’abîmer vos tuiles. Pour la réparation de la couverture elle-même — faîtage, tuiles cassées, solins, souche de cheminée — voir la page Couverture & réparation.",
+      "PROUX nettoie et protège les toitures en tuile terre cuite, tuile béton et ardoise dans l’Ain et le Pays de Gex : démoussage, nettoyage basse ou haute pression selon le support et traitement hydrofuge, sans jamais monter la pression au point d’abîmer vos tuiles. Pour la réparation de la couverture elle-même — faîtage, tuiles cassées, solins, souche de cheminée — voir la page Couverture & réparation.",
     metaTitle: "Nettoyage de toiture, démoussage & hydrofuge",
     metaDescription:
       "PROUX nettoie et protège votre toiture dans l’Ain et le Pays de Gex : démoussage, nettoyage basse/haute pression, traitement hydrofuge, nettoyage de gouttières. Devis gratuit sous 48 h.",
@@ -198,8 +202,10 @@ export const poles: Pole[] = [
     heroImage: "/img/services/toiture/faitage.jpg",
     heroImageAlt:
       "Faîtage d’une toiture en tuile en cours de réfection par PROUX",
+    introLead:
+      "Une toiture propre reste vulnérable là où les éléments se raccordent : faîtage descellé, tuiles glissées, solins qui se soulèvent, souche fissurée.",
     intro:
-      "Une toiture propre reste vulnérable là où les éléments se raccordent : faîtage descellé, tuiles cassées ou glissées, solins qui se soulèvent autour de la cheminée, souche fissurée. Ces points laissent l’eau atteindre la charpente. PROUX intervient sur ces réparations ponctuelles de couverture dans l’Ain et le Pays de Gex, en complément du démoussage ou lors d’une visite dédiée. Pour une réfection complète de couverture ou de charpente, on vous oriente vers un couvreur spécialisé.",
+      "Ces points laissent l’eau atteindre la charpente. PROUX intervient sur ces réparations ponctuelles de couverture dans l’Ain et le Pays de Gex, en complément du démoussage ou lors d’une visite dédiée. Pour une réfection complète de couverture ou de charpente, on vous oriente vers un couvreur spécialisé.",
     metaTitle: "Réparation de toiture : faîtage, tuiles, solins & cheminée",
     metaDescription:
       "PROUX répare les points sensibles de votre toiture dans l’Ain et le Pays de Gex : réfection de faîtage, remplacement de tuiles, solins et abergements, souche de cheminée. Devis gratuit sous 48 h.",
@@ -273,8 +279,10 @@ export const poles: Pole[] = [
     heroImage: "/img/services/nettoyage/hero.jpg",
     heroImageAlt:
       "Allée en pavés autobloquants entièrement nettoyée par PROUX",
+    introLead:
+      "Enduit noirci au nord, terrasse glissante, dallage envahi de mousse : l’humidité et les micro-algues s’installent partout où l’eau stagne.",
     intro:
-      "Enduit noirci au nord, terrasse glissante, dallage envahi de mousse : l’humidité et les micro-algues s’installent partout où l’eau stagne. PROUX nettoie façades, terrasses, dallages, murets et allées dans l’Ain et le Pays de Gex, avec la bonne pression et le bon produit pour chaque support — sans décaper l’enduit ni marquer la pierre.",
+      "PROUX nettoie façades, terrasses, dallages, murets et allées dans l’Ain et le Pays de Gex, avec la bonne pression et le bon produit pour chaque support — sans décaper l’enduit ni marquer la pierre.",
     metaTitle: "Nettoyage de façade, terrasse & dallage",
     metaDescription:
       "PROUX nettoie vos façades, terrasses, dallages et murets dans l’Ain et le Pays de Gex : anti-mousse, hydrofuge de sol, dégrisage du bois. Devis gratuit sous 48 h.",
@@ -383,8 +391,10 @@ export const poles: Pole[] = [
     heroImage: "/img/services/peinture/hero.jpg",
     heroImageAlt:
       "Façade de maison et toiture entretenues par PROUX dans le Pays de Gex",
+    introLead:
+      "Une peinture extérieure qui s’écaille au bout de deux ans, c’est presque toujours un support mal préparé.",
     intro:
-      "Une peinture extérieure qui s’écaille au bout de deux ans, c’est presque toujours un support mal préparé. PROUX peint façades, sous-faces de toit, rives et boiseries dans l’Ain et le Pays de Gex : on nettoie, on traite, on rebouche et on ponce avant d’appliquer un produit conçu pour l’extérieur. Le résultat est net et il dure.",
+      "PROUX peint façades, sous-faces de toit, rives et boiseries dans l’Ain et le Pays de Gex : on nettoie, on traite, on rebouche et on ponce avant d’appliquer un produit conçu pour l’extérieur. Le résultat est net et il dure.",
     metaTitle: "Peinture extérieure : façade, boiseries & sous-face",
     metaDescription:
       "PROUX réalise vos travaux de peinture extérieure dans l’Ain et le Pays de Gex : façade, sous-face de toit, rives, volets et boiseries, lasure bois. Devis gratuit sous 48 h.",

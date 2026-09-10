@@ -41,10 +41,10 @@ export function PolePage({ poleKey }: { poleKey: Pole["key"] }) {
         ])}
       />
 
-      <PoleHero pole={pole} />
+      <PoleHero pole={pole} subs={subs} />
 
       <Section aria-label={`${pole.label} — présentation`}>
-        <PoleIntro pole={pole} subs={subs} />
+        <PoleIntro pole={pole} />
         {pole.schemaImage && <PoleSchema pole={pole} />}
       </Section>
 

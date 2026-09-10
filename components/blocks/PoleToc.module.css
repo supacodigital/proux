@@ -1,0 +1,69 @@
+/* PoleToc — sommaire ancré des sous-prestations, à droite du hero. */
+
+.label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+  margin-bottom: var(--space-4);
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 1px;
+  background: var(--color-border);
+  border-block: 1px solid var(--color-border);
+}
+
+.item {
+  background: var(--color-bg);
+}
+
+.link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-2);
+  color: var(--color-navy-700);
+  transition:
+    background-color var(--dur-fast) ease,
+    padding-left var(--dur-base) var(--ease-out);
+}
+
+.num {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink-mute);
+}
+
+.text {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    background: var(--color-surface);
+    padding-left: var(--space-4);
+  }
+
+  .link:hover .num {
+    color: var(--color-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: background-color var(--dur-fast) ease;
+  }
+
+  .link:hover {
+    padding-left: var(--space-2);
+  }
+}

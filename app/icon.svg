@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 40" width="48" height="40">
-  <rect width="48" height="40" fill="#0f2a47" rx="8" />
-  <path d="M9 21 24 8l15 13v1.6h-4.4V33a2 2 0 0 1-2 2H17.4a2 2 0 0 1-2-2V22.6H9V21Z" fill="#f4f7fb" />
-  <rect x="21" y="25" width="6" height="6" rx="1" fill="#1f6feb" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="13" fill="#0f2a47"/>
+  <!-- toit à deux pentes, faîte décentré vers la droite (silhouette du logo) -->
+  <path d="M6 42 35 9l24 33h-8L35 23 14 42Z" fill="#f4f7fb"/>
+  <!-- pente droite prolongée façon "rouleau", accent bleu -->
+  <path d="M35 23 52 42h6L38 19Z" fill="#1f6feb"/>
+  <!-- lucarne cintrée sous le faîte -->
+  <path d="M29 42V33a6 6 0 0 1 12 0v9Z" fill="#f4f7fb"/>
+  <path d="M31.4 42v-9a3.6 3.6 0 0 1 7.2 0v9Z" fill="#0f2a47"/>
 </svg>

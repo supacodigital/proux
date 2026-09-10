@@ -60,19 +60,10 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-1);
   padding: var(--space-6);
-  text-align: start;
-}
-
-/* Cartes de bord : le texte s'aligne sur la gouttière de la page. */
-.card:first-child .body {
-  padding-left: max(var(--space-6), calc((100vw - var(--container-max)) / 2));
-}
-
-.card:last-child .body {
-  padding-right: max(var(--space-6), calc((100vw - var(--container-max)) / 2));
+  text-align: center;
 }
 
 /* Sur-titre : petit, blanc, majuscules espacées, précédé d'un trait bleu */
@@ -139,6 +130,7 @@
   line-height: 1.5;
   color: var(--color-on-dark);
   max-width: 24ch;
+  margin-inline: auto;
 }
 
 /* Bouton "Découvrir" — même forme que le CTA du header
