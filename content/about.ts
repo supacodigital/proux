@@ -70,7 +70,7 @@ export const about = {
     {
       icon: "handshake",
       title: "Le conseil honnête",
-      body: "Si une toiture n’a pas besoin d’hydrofuge, on le dit. Si une réparation dépasse notre métier, on oriente vers le bon artisan. On préfère un client qui revient à une vente forcée.",
+      body: "Si une toiture n’a pas besoin d’hydrofuge, on le dit. On préfère un client qui revient à une vente forcée.",
     },
     {
       icon: "shield-check",

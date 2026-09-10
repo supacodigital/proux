@@ -18,6 +18,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Garde anti-débordement horizontal : aucune section ne doit pouvoir
+   faire défiler la page latéralement sur mobile (claude.md §10 Responsive).
+   `clip` plutôt que `hidden` : ne crée pas de conteneur de défilement,
+   donc `position: sticky` (header, intro CtaBanner) continue de fonctionner. */
+html,
+body {
+  overflow-x: clip;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

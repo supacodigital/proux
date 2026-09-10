@@ -184,9 +184,9 @@ export const poles: Pole[] = [
     href: "/couverture",
     tagline: "Faîtage, tuiles, solins, souche de cheminée : les points qui laissent passer l’eau.",
     // Header (méga-menu / menu mobile) + carte home : photo de chantier.
-    image: "/img/services/toiture/solins.jpg",
-    wideImage: "/img/services/toiture/solins.jpg",
-    imageAlt: "Solin en zinc neuf posé au pied d’une souche de cheminée par PROUX",
+    image: "/img/services/couverture.jpeg",
+    wideImage: "/img/services/couverture.jpeg",
+    imageAlt: "Artisan PROUX posant des tuiles neuves sur un pan de toiture en réfection",
     // Page /couverture : schéma annoté fourni par le client (2026-09-09).
     schemaImage: "/img/services/couverture-cards.jpg",
     schemaImageAlt:
@@ -205,7 +205,7 @@ export const poles: Pole[] = [
     introLead:
       "Une toiture propre reste vulnérable là où les éléments se raccordent : faîtage descellé, tuiles glissées, solins qui se soulèvent, souche fissurée.",
     intro:
-      "Ces points laissent l’eau atteindre la charpente. PROUX intervient sur ces réparations ponctuelles de couverture dans l’Ain et le Pays de Gex, en complément du démoussage ou lors d’une visite dédiée. Pour une réfection complète de couverture ou de charpente, on vous oriente vers un couvreur spécialisé.",
+      "Ces points laissent l’eau atteindre la charpente. PROUX intervient sur ces réparations de couverture dans l’Ain et le Pays de Gex, en complément du démoussage ou lors d’une visite dédiée.",
     metaTitle: "Réparation de toiture : faîtage, tuiles, solins & cheminée",
     metaDescription:
       "PROUX répare les points sensibles de votre toiture dans l’Ain et le Pays de Gex : réfection de faîtage, remplacement de tuiles, solins et abergements, souche de cheminée. Devis gratuit sous 48 h.",
@@ -233,8 +233,8 @@ export const poles: Pole[] = [
         slug: "tuiles",
         summary: "Repérage et remplacement des tuiles cassées ou glissées.",
         body: "Une seule tuile fêlée ou déplacée suffit à laisser l’eau s’infiltrer dans la charpente. Pendant le démoussage ou lors d’une intervention dédiée, on repère les tuiles cassées, poreuses ou mal positionnées et on les remplace par des tuiles compatibles. C’est le geste le plus simple pour éviter un dégât des eaux coûteux.",
-        image: "/img/services/toiture/tuiles.jpg",
-        imageAlt: "Arêtier d’une toiture en tuile terre cuite entretenu par PROUX",
+        image: "/img/services/couverture.jpeg",
+        imageAlt: "Artisan PROUX posant des tuiles neuves sur un pan de toiture en réfection",
       },
       {
         label: "Solins & abergements",

@@ -85,11 +85,6 @@ export const faqByPole: Record<
   ],
   couverture: [
     {
-      question: "Faites-vous des toitures complètes ou seulement des réparations ?",
-      answer:
-        "On intervient sur les réparations ponctuelles : faîtage, tuiles cassées ou glissées, solins et abergements autour de la cheminée, rejointoiement de souche. Pour une réfection complète de couverture ou une reprise de charpente, on vous oriente vers un couvreur spécialisé — c’est un autre métier.",
-    },
-    {
       question: "Comment savoir d’où vient l’infiltration ?",
       answer:
         "L’eau qui apparaît à l’intérieur entre rarement juste au-dessus de la tache. On monte sur la toiture, on inspecte les points sensibles — faîtage, arêtiers, solins, tuiles autour des pénétrations — et on remonte à la source. Le devis liste ce qu’on a trouvé et ce qu’on propose de reprendre.",
