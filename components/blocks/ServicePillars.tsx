@@ -111,6 +111,9 @@ export function ServicePillars() {
                   alt={pole.imageAlt}
                   fill
                   sizes="(max-width: 900px) 100vw, 50vw"
+                  // 1re carte : proche du pli sur desktop → on la charge tôt.
+                  // Les 3 autres restent en lazy (défaut).
+                  priority={i === 0}
                   className={styles.mediaImg}
                 />
                 <span className={styles.mediaIcon} aria-hidden>

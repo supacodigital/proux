@@ -45,6 +45,13 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 90],
     minimumCacheTTL: 31_536_000,
+    // Le VPS est mono-process : chaque variante d'image non cachée coûte
+    // 0,5–2,5 s de CPU (réencodage AVIF) au premier hit. On réduit le nombre
+    // de tailles générables au strict nécessaire pour nos `sizes` réels
+    // (100vw / 50vw / 40vw / 33vw sur des viewports jusqu'à ~1440 px + retina),
+    // ce qui limite d'autant le travail à froid et le cache à pré-chauffer.
+    deviceSizes: [360, 480, 720, 960, 1200, 1600, 1920],
+    imageSizes: [200, 320, 480],
   },
 
   async headers() {
