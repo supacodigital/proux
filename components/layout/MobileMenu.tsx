@@ -33,23 +33,42 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Échap + verrou de scroll du body pendant l'ouverture
+  // Échap pour fermer. Effet séparé du verrou de scroll ci-dessous : `onClose`
+  // ne doit jamais faire réexécuter le verrou (voir plus bas).
   useEffect(() => {
     if (!open) return;
-
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
 
-    const { overflow } = document.body.style;
-    document.body.style.overflow = "hidden";
+  // Verrou de scroll du body pendant l'ouverture.
+  // `overflow: hidden` seul casse le `position: sticky` du header (le
+  // contexte de scroll du body change alors que la page reste défilée →
+  // le header sticky se retrouve figé à son offset dans le flux, hors
+  // écran). On fige plutôt le body en `position: fixed` à son scroll
+  // actuel, puis on restaure le scroll à la fermeture.
+  // Dépend UNIQUEMENT de `open` : si ça dépendait aussi d'un callback recréé
+  // à chaque render du parent, l'effet se relancerait en boucle et
+  // recapturerait `scrollY` alors qu'il vaut déjà 0 (body déjà verrouillé).
+  useEffect(() => {
+    if (!open) return;
+
+    const scrollY = window.scrollY;
+    const { position, top, width } = document.body.style;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
     return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = overflow;
+      document.body.style.position = position;
+      document.body.style.top = top;
+      document.body.style.width = width;
+      window.scrollTo(0, scrollY);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   return (
     <div

@@ -56,6 +56,8 @@ export function Header({ overlay }: HeaderProps) {
     setOpenPanel(null);
   }, []);
 
+  const closeMobileMenu = useCallback(() => setMenuOpen(false), []);
+
   // Ferme tout à chaque navigation
   useEffect(() => {
     setMenuOpen(false);
@@ -261,7 +263,7 @@ export function Header({ overlay }: HeaderProps) {
         onClick={closeNow}
       />
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu open={menuOpen} onClose={closeMobileMenu} />
     </header>
   );
 }
