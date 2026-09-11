@@ -57,7 +57,7 @@ export function Footer() {
                 <h3 className={styles.colTitle}>{col.title}</h3>
                 <ul>
                   {col.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.label}>
                       <NavLink href={link.href}>{link.label}</NavLink>
                     </li>
                   ))}

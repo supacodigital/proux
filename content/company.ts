@@ -69,19 +69,36 @@ export const company = {
   // compteur « villes desservies » de la home. TODO(client) : liste réelle
   // des communes prioritaires (claude.md §13) + créer les pages dédiées.
   mainCities: [
+    // Pays de Gex Agglo — 27 communes (liste complète, cf. claude.md §13)
     "Gex",
-    "Ferney-Voltaire",
-    "Saint-Genis-Pouilly",
-    "Prévessin-Moëns",
+    "Cessy",
+    "Challex",
+    "Chevry",
+    "Chézery-Forens",
+    "Collonges",
+    "Crozet",
     "Divonne-les-Bains",
+    "Échenevex",
+    "Farges",
+    "Ferney-Voltaire",
+    "Grilly",
+    "Léaz",
+    "Lélex",
+    "Mijoux",
     "Ornex",
-    "Bellegarde-sur-Valserine",
+    "Péron",
+    "Pougny",
+    "Prévessin-Moëns",
+    "Saint-Genis-Pouilly",
+    "Saint-Jean-de-Gonville",
+    "Sauverny",
+    "Ségny",
+    "Sergy",
+    "Thoiry",
+    "Versonnex",
+    "Vesancy",
+    // Bassin franco-genevois élargi (hors Pays de Gex — Haut-Bugey)
     "Valserhône",
-    "Châtillon-en-Michaille",
-    "Nantua",
-    "Oyonnax",
-    "Montréal-la-Cluse",
-    "Bourg-en-Bresse",
     "Injoux-Génissiat",
   ] as string[],
 
@@ -171,9 +188,19 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
       { label: "Demander un devis", href: "/contact" },
     ],
   },
+  {
+    title: "Zone d’intervention",
+    // Aperçu des communes principales — liste complète sur la home (#zone),
+    // source unique `company.mainCities`.
+    links: [
+      ...company.mainCities.slice(0, 6).map((city) => ({
+        label: city,
+        href: "/#zone",
+      })),
+      { label: "Voir toutes les communes →", href: "/#zone" },
+    ],
+  },
 ];
-// TODO : rétablir une colonne « Zone d’intervention » quand les pages
-// /zone-intervention + /zone-intervention/[commune] seront construites (brief §7.4).
 
 export const legalNav: NavLink[] = [
   { label: "Mentions légales", href: "/mentions-legales" },

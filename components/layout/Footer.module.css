@@ -135,7 +135,13 @@
 .columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-8);
+  gap: var(--space-8) var(--space-6);
+}
+
+@media (max-width: 479px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
 }
 
 .colTitle {
@@ -230,15 +236,13 @@
 
 @media (min-width: 640px) {
   .columns {
-    /* 2 colonnes (Prestations / L’entreprise) — repasser à repeat(3)
-       quand la colonne « Zone d’intervention » reviendra. */
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 960px) {
   .grid {
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1fr 1.6fr;
     gap: var(--space-16);
     align-items: start;
   }
