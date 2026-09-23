@@ -11,6 +11,13 @@
 
 set -euo pipefail
 
+# Le script tourne en SSH non interactif (pas de TTY). Quand pnpm doit
+# recréer node_modules — typiquement après une montée de version du VPS,
+# l'ancien dossier ayant été posé par une version antérieure — il demande
+# confirmation avant de le purger et s'interrompt faute de TTY
+# (ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY). CI=true vaut accord.
+export CI=true
+
 APP_DIR="/var/www/proux-couverture.fr"
 BRANCH="main"
 
