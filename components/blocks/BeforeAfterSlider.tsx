@@ -116,7 +116,7 @@ export function BeforeAfterSlider({
         src={after}
         alt={`${alt} — après`}
         fill
-        sizes="(max-width: 900px) 100vw, 900px"
+        sizes="(max-width: 900px) 100vw, 1140px"
         priority={priority}
         className={styles.img}
         draggable={false}
@@ -131,7 +131,7 @@ export function BeforeAfterSlider({
           src={before}
           alt={`${alt} — avant`}
           fill
-          sizes="(max-width: 900px) 100vw, 900px"
+          sizes="(max-width: 900px) 100vw, 1140px"
           priority={priority}
           className={styles.img}
           draggable={false}

@@ -46,14 +46,18 @@ export function localBusinessSchema(): Record<string, unknown> {
         name,
       })),
     ],
+    // `reviewCount` doit correspondre à un nombre d'avis vérifiable, sinon
+    // Google peut sanctionner l'extrait enrichi. Tant que le total exact de la
+    // fiche n'est pas confirmé (company.reviews.count), on n'agrège que les
+    // avis réellement publiés sur le site.
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: company.reviews.rating,
-      reviewCount: company.reviews.count ?? company.reviews.minCount,
+      reviewCount: company.reviews.count ?? testimonials.length,
       bestRating: 5,
       worstRating: 1,
     },
-    review: testimonials.slice(0, 4).map((t) => ({
+    review: testimonials.map((t) => ({
       "@type": "Review",
       author: { "@type": "Person", name: t.author },
       reviewRating: {

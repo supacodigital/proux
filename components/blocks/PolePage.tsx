@@ -49,10 +49,13 @@ export function PolePage({ poleKey }: { poleKey: Pole["key"] }) {
         {pole.schemaImage && <PoleSchema pole={pole} />}
       </Section>
 
-      <Section
-        tone="surface"
-        aria-label={`Prestations ${pole.label.toLowerCase()}`}
-      >
+      <Section tone="surface" aria-labelledby="pole-subs-title">
+        {/* Chapeau des sous-prestations : elles sont en <h3>, il leur faut un
+            <h2> parent pour que la hiérarchie Hn reste correcte (§10). Le
+            design validé n'affiche pas de titre ici → masqué visuellement. */}
+        <h2 id="pole-subs-title" className="visually-hidden">
+          Prestations {pole.label.toLowerCase()}
+        </h2>
         <div className={sectionStyles.list}>
           {subs.map((sub, i) => (
             <ServiceSection key={sub.slug} sub={sub} index={i} />

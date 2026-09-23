@@ -100,7 +100,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                     src={pole.image}
                     alt=""
                     fill
-                    sizes="100vw"
+                    /* Le menu mobile n'existe plus au-delà de 1000px : inutile
+                       de laisser next/image demander une source 1920px. */
+                    sizes="(max-width: 1000px) 100vw, 1000px"
                     className={styles.cardImg}
                   />
                 </span>
