@@ -1,0 +1,108 @@
+/* PoleVideo — vidéo de chantier verticale + texte d'accompagnement. */
+
+.wrap {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.text {
+  max-width: 46rem;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-accent);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  color: var(--color-navy);
+}
+
+.body {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+}
+
+.points {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+}
+
+.point {
+  position: relative;
+  padding-left: var(--space-6);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+}
+
+.point::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+}
+
+.media {
+  display: flex;
+  justify-content: center;
+}
+
+.figure {
+  margin: 0;
+  width: min(100%, 20rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow);
+}
+
+/* Ratio figé sur le format natif (9:16) → pas de saut de mise en page. */
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 608 / 1080;
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-16);
+  }
+
+  .media {
+    justify-content: flex-end;
+  }
+
+  .figure {
+    width: 19rem;
+  }
+}

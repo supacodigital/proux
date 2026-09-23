@@ -9,6 +9,7 @@ import { PoleIntro } from "./PoleIntro";
 import { PoleSchema } from "./PoleSchema";
 import { ServiceSection } from "./ServiceSection";
 import { MethodNote } from "./MethodNote";
+import { PoleVideo } from "./PoleVideo";
 import { PoleWork } from "./PoleWork";
 import { FaqSection } from "./FaqSection";
 import { CtaBanner } from "./CtaBanner";
@@ -62,6 +63,12 @@ export function PolePage({ poleKey }: { poleKey: Pole["key"] }) {
       {pole.methodNote && (
         <Section id="methode" aria-label={pole.methodNote.title}>
           <MethodNote note={pole.methodNote} />
+        </Section>
+      )}
+
+      {pole.video && (
+        <Section tone="surface" aria-labelledby="pole-video-title">
+          <PoleVideo content={pole.video} />
         </Section>
       )}
 

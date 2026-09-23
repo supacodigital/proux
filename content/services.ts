@@ -19,6 +19,8 @@
    en production.
    ============================================================= */
 
+import type { PoleVideoContent } from "@/components/blocks/PoleVideo";
+
 export type SubService = {
   label: string;
   slug: string;
@@ -81,6 +83,9 @@ export type Pole = {
   /** encadré méthode, si pertinent */
   methodNote?: MethodNote;
 
+  /** vidéo de chantier verticale, si on en a une pour ce pôle */
+  video?: PoleVideoContent;
+
   subs: SubService[];
 };
 
@@ -128,6 +133,21 @@ export const poles: Pole[] = [
       ],
     },
 
+    video: {
+      kicker: "En vidéo",
+      title: "Une toiture en fin de chantier",
+      body: "Quelques secondes filmées depuis le toit, une fois l’intervention terminée : la tuile est nette d’un bout à l’autre du versant, les mousses ont été retirées jusqu’au faîtage et les abords sont laissés propres.",
+      points: [
+        "Tuile béton traitée sur l’ensemble du versant, sans zone oubliée",
+        "Faîtage et rives nettoyés au même titre que le reste de la couverture",
+        "Chantier rangé avant notre départ",
+      ],
+      src: "/video/chantier-toiture.mp4",
+      poster: "/video/chantier-toiture-poster.jpg",
+      caption:
+        "Vue depuis le toit d’une toiture en tuile béton nettoyée par PROUX, du faîtage jusqu’à la gouttière",
+    },
+
     subs: [
       {
         label: "Traitement hydrofuge",
@@ -139,9 +159,9 @@ export const poles: Pole[] = [
           "Réduit fortement la reprise de mousse et de lichen",
           "Application après séchage complet du démoussage",
         ],
-        image: "/img/services/toiture/hydrofuge.jpg",
+        image: "/img/services/toiture/hydrofuge-application.jpg",
         imageAlt:
-          "Toiture en tuile après traitement hydrofuge par PROUX, teinte ravivée",
+          "Application au pulvérisateur d’un traitement hydrofuge sur une toiture en tuile béton : le versant déjà traité est nettement plus clair que le versant restant",
       },
       {
         label: "Démoussage de toiture",
